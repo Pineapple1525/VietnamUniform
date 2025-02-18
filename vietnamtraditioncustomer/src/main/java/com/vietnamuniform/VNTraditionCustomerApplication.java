@@ -16,7 +16,7 @@ public class VNTraditionCustomerApplication extends Application {
         stage.setScene(scene);
         stage.show();
         // xin chao toi la dua
-        // chao moi nguoi 
+        // chao moi nguoi
     }
 
     public static void main(String[] args) {
