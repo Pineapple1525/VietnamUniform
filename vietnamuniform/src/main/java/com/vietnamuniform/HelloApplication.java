@@ -15,7 +15,7 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
-         // xin chao moi nguoi
+
     }
 
     public static void main(String[] args) {
