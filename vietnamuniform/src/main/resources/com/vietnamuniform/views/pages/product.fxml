@@ -8,8 +8,13 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
+<<<<<<< HEAD
             fx:controller="com.vietnamuniform.controller.ProductController"
             prefHeight="400.0" prefWidth="600.0">
     <Label>xin chao moi nguoi</Label>
+=======
+            fx:controller="com.vietnamuniform.views.pages.Product"
+            prefHeight="400.0" prefWidth="600.0">
+>>>>>>> 2f4a0c42791095825a19a27b8749ee3c1c43cf49
 
 </AnchorPane>
