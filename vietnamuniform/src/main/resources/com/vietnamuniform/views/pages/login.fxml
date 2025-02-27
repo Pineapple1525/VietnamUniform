@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -9,11 +10,11 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vietnamuniform.controller.LoginController">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: #fff;">
          <left>
-            <Pane prefHeight="696.0" prefWidth="471.0" style="-fx-background-image: url(&quot;file:/C:/Users/Quang/Downloads/coffee.jpg&quot;); -fx-background-size: cover;" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="696.0" prefWidth="471.0" style="-fx-background-image: url('/com/vietnamuniform/views/images/aodailogo.png'); -fx-background-size: cover;" BorderPane.alignment="CENTER" />
          </left>
          <center>
             <Pane prefHeight="678.0" prefWidth="483.0" BorderPane.alignment="CENTER">
@@ -22,26 +23,30 @@
                      <children>
                         <Pane prefHeight="722.0" prefWidth="668.0">
                            <children>
-                              <TextField layoutX="123.0" layoutY="200.0" prefHeight="45.0" prefWidth="331.0" promptText="emailexemplo@gmail.com" />
-                              <TextField layoutX="123.0" layoutY="299.0" prefHeight="45.0" prefWidth="331.0" promptText="Enter 8 characters or more" />
-                              <Button layoutX="326.0" layoutY="419.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="133.0" style="-fx-background-color: #8B4513;" text="Sign in" textFill="WHITE" />
-                              <Label layoutX="121.0" layoutY="164.0" prefHeight="27.0" prefWidth="190.0" text="email">
+                              <TextField fx:id="emailField" layoutX="123.0" layoutY="200.0" prefHeight="45.0" prefWidth="331.0" promptText="emailexemplo@gmail.com" />
+                              <PasswordField fx:id="passwordField" layoutX="123.0" layoutY="299.0" prefHeight="45.0" prefWidth="331.0" promptText="Enter 8 characters or more" />
+                              <Button fx:id="loginButton" layoutX="326.0" layoutY="419.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="44.0" prefWidth="133.0" style="-fx-background-color: #8B4513;" text="Sign in" textFill="WHITE" />
+                              <Label layoutX="121.0" layoutY="164.0" prefHeight="27.0" prefWidth="190.0" text="Email">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="121.0" layoutY="263.0" prefHeight="27.0" prefWidth="184.0" text="password">
+                              <Label layoutX="121.0" layoutY="263.0" prefHeight="27.0" prefWidth="184.0" text="Password">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="321.0" layoutY="357.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Forgot password?" />
+                              <Button layoutX="338.0" layoutY="355.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Forgot password?" />
                               <Button layoutX="124.0" layoutY="419.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="139.0" style="-fx-background-color: #000055; -fx-border-color: transparent;" text="Sign up" textFill="WHITE" />
                               <Label layoutX="121.0" layoutY="92.0" prefHeight="35.0" prefWidth="185.0" text="Vietnam uniform">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
                               </Label>
+                              <Label fx:id="ErrorField" alignment="CENTER" layoutY="510.0" prefHeight="41.0" prefWidth="554.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
                            </children>
                         </Pane>
                      </children>
