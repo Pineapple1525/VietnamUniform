@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
@@ -14,7 +16,14 @@
    <children>
       <BorderPane prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: #fff;">
          <left>
-            <Pane prefHeight="696.0" prefWidth="471.0" style="-fx-background-image: url('/com/vietnamuniform/views/images/aodailogo.png'); -fx-background-size: cover;" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="696.0" prefWidth="471.0" style="-fx-background-image: url('/vietnamuniform/views/images/aodailogo.png'); -fx-background-size: cover;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="600.0" fitWidth="498.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Snapinst.app_474616833_1316578136146733_4172200731744947492_n_1080.jpg" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
          </left>
          <center>
             <Pane prefHeight="678.0" prefWidth="483.0" BorderPane.alignment="CENTER">
