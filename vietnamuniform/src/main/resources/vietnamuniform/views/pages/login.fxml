@@ -16,11 +16,11 @@
    <children>
       <BorderPane prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: #fff;">
          <left>
-            <Pane prefHeight="696.0" prefWidth="471.0" style="-fx-background-image: url('/vietnamuniform/views/images/aodailogo.png'); -fx-background-size: cover;" BorderPane.alignment="CENTER">
+            <Pane prefHeight="696.0" prefWidth="471.0" style="-fx-background-image: url('/vietnamuniform/views/images/aodailogin.png'); -fx-background-size: cover;" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="600.0" fitWidth="498.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../../Snapinst.app_474616833_1316578136146733_4172200731744947492_n_1080.jpg" />
+                        <Image url="@../images/aodailogin.png" />
                      </image>
                   </ImageView>
                </children></Pane>
@@ -33,7 +33,7 @@
                         <Pane prefHeight="722.0" prefWidth="668.0">
                            <children>
                               <TextField fx:id="emailField" layoutX="123.0" layoutY="200.0" prefHeight="45.0" prefWidth="331.0" promptText="emailexemplo@gmail.com" />
-                              <PasswordField fx:id="passwordField" layoutX="123.0" layoutY="299.0" prefHeight="45.0" prefWidth="331.0" promptText="Enter 8 characters or more" />
+                              <PasswordField fx:id="passwordField" layoutX="123.0" layoutY="299.0" prefHeight="45.0" prefWidth="331.0" promptText="Enter 4 characters or more" />
                               <Button fx:id="loginButton" layoutX="326.0" layoutY="419.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="44.0" prefWidth="133.0" style="-fx-background-color: #8B4513;" text="Sign in" textFill="WHITE" />
                               <Label layoutX="121.0" layoutY="164.0" prefHeight="27.0" prefWidth="190.0" text="Email">
                                  <font>
@@ -52,7 +52,7 @@
                                     <Font size="24.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="ErrorField" alignment="CENTER" layoutY="510.0" prefHeight="41.0" prefWidth="554.0">
+                              <Label fx:id="ErrorField" alignment="CENTER" layoutY="510.0" prefHeight="41.0" prefWidth="554.0" textFill="RED">
                                  <font>
                                     <Font size="14.0" />
                                  </font></Label>
