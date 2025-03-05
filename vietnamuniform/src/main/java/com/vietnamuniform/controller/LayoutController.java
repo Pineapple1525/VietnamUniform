@@ -1,5 +1,6 @@
 package com.vietnamuniform.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -28,34 +29,29 @@ public class LayoutController {
         public void loadProducts() {
             loadView("/com/vietnamuniform/views/pages/product.fxml");
         }
-        @FXML
-        public void loadCategories() {
-            loadView("/com/vietnamuniform/views/pages/categories.fxml");
-        }
-        @FXML
-        public void loadOders() {
-            loadView("/com/vietnamuniform/views/pages/oder.fxml");
-        }
-        @FXML
-        public void loadOder_Details() {
-            loadView("/com/vietnamuniform/views/pages/oders-details.fxml");
-        }
-        @FXML
-        public void loadCustomers() {
-            loadView("/com/vietnamuniform/views/pages/customer.fxml");
-        }
-        @FXML
-        public void loadReports() {
-            loadView("/com/vietnamuniform/views/pages/reports.fxml");
-        }
-        @FXML
-        public void loadPayment() {
-            loadView("/com/vietnamuniform/views/pages/payments.fxml");
-        }
 
-        public void loadInvoices() {
-            loadView("/com/vietnamuniform/views/pages/invoice.fxml");
-        }
-
-
+    @FXML
+    public void loadEmployees() {
+        loadView("/com/vietnamuniform/views/pages/employees.fxml");
+    }
+    @FXML
+    public void loadOder() {
+        loadView("/com/vietnamuniform/views/pages/oder.fxml");
+    }
+    @FXML
+    public void loadOder_details() {
+        loadView("/com/vietnamuniform/views/pages/oders-details.fxml");
+    }
+    @FXML
+    public void loadstatistics() {
+        loadView("/com/vietnamuniform/views/pages/statistics.fxml");
+    }
+    @FXML
+    public void loadExit() {
+        loadView("/com/vietnamuniform/views/pages/exit.fxml");
+    }
+    @FXML
+    public void loadCustomers() {
+        loadView("/com/vietnamuniform/views/pages/customer.fxml");
+    }
 }
