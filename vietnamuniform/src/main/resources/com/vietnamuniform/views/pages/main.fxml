@@ -57,58 +57,7 @@
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="categoriesBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadCategories" prefHeight="51.0" prefWidth="230.0" text="Categories" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8-category-60.png" />
-                           </image></ImageView>
-                     </graphic>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="odersBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="45.0" mnemonicParsing="false" onAction="#loadOders" prefHeight="51.0" prefWidth="230.0" text="Oders" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8-shopping-bag-60.png" />
-                           </image></ImageView>
-                     </graphic>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="oder_detailsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" onAction="#loadOder_Details" prefHeight="51.0" prefWidth="230.0" text="Order Details " textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8-purchase-order-60.png" />
-                           </image></ImageView>
-                     </graphic>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="customersBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="116.0" mnemonicParsing="false" onAction="#loadCustomers" prefHeight="51.0" prefWidth="230.0" text="Customers " textFill="WHITE">
+                  <Button fx:id="categoriesBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadCategories" prefHeight="51.0" prefWidth="230.0" text="Customers" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -125,7 +74,58 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="reportsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="151.0" mnemonicParsing="false" onAction="#loadReports" prefHeight="51.0" prefWidth="230.0" text="Reports " textFill="WHITE">
+                  <Button fx:id="odersBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="45.0" mnemonicParsing="false" onAction="#loadOders" prefHeight="51.0" prefWidth="230.0" text="Employee " textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-employee-60.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="oder_detailsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" onAction="#loadOder_Details" prefHeight="51.0" prefWidth="230.0" text="Order " textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-purchase-order-60.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="customersBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="116.0" mnemonicParsing="false" onAction="#loadCustomers" prefHeight="51.0" prefWidth="230.0" text="Order Details " textFill="WHITE">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-details-60.png" />
+                           </image></ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="reportsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="151.0" mnemonicParsing="false" onAction="#loadReports" prefHeight="51.0" prefWidth="230.0" text="Statistics " textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -142,29 +142,13 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="paymentsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="187.0" mnemonicParsing="false" onAction="#loadPayment" prefHeight="51.0" prefWidth="230.0" text="Payments " textFill="WHITE">
+                  <Button fx:id="reportsBtn1" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#loadReports" prefHeight="51.0" prefWidth="230.0" text="Exit" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/icons8-payment-60.png" />
-                           </image></ImageView>
-                     </graphic>
-                     <padding>
-                        <Insets left="30.0" />
-                     </padding>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Button fx:id="invoicesBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="222.0" mnemonicParsing="false" onAction="#loadInvoices" prefHeight="51.0" prefWidth="230.0" stylesheets="@../styles/main.css" text="Invoices " textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/icons8-invoice-60.png" />
-                           </image></ImageView>
+                              <Image url="@../images/icons8-exit-60.png" />
+                           </image>
+                        </ImageView>
                      </graphic>
                      <padding>
                         <Insets left="30.0" />
