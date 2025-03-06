@@ -1,4 +1,4 @@
 package com.vietnamuniform.controller;
 
-public class PaymentController {
+public class RegisterController {
 }

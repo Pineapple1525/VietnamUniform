@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+<<<<<<< HEAD:vietnamuniform/src/main/resources/com/vietnamuniform/views/pages/statistics .fxml
+=======
+<<<<<<<< HEAD:vietnamuniform/src/main/resources/com/vietnamuniform/views/pages/customer.fxml
+            fx:controller="com.vietnamuniform.controller.CustomerController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="185.0" layoutY="71.0" text="this is customer" />
+========
+>>>>>>> ngan:vietnamuniform/target/classes/com/vietnamuniform/views/pages/statistics .fxml
+            fx:controller="com.vietnamuniform.controller.StatisticsController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="185.0" layoutY="71.0" text="this is statistics" />
+<<<<<<< HEAD:vietnamuniform/src/main/resources/com/vietnamuniform/views/pages/statistics .fxml
+=======
+>>>>>>>> ngan:vietnamuniform/target/classes/com/vietnamuniform/views/pages/statistics .fxml
+>>>>>>> ngan:vietnamuniform/target/classes/com/vietnamuniform/views/pages/statistics .fxml
+    </children>
+
+</AnchorPane>

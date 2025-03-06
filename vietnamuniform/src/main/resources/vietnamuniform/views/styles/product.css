@@ -1,0 +1,86 @@
+/* Định dạng chung */
+.root {
+    -fx-font-family: "Arial";
+    -fx-background-color: #f8f9fa;
+}
+
+/* TextField - Ô nhập liệu */
+.text-field {
+    -fx-padding: 8px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ced4da;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-font-size: 14px;
+}
+.text-field:focused {
+    -fx-border-color: #80bdff;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.25), 5, 0, 0, 0);
+}
+
+/* Button - Các nút bấm */
+.button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-opacity: 0.8;
+}
+
+/* Màu cho từng loại nút */
+#btnAdd {
+    -fx-background-color: #28a745; /* Bootstrap success */
+}
+#btnUpdate {
+    -fx-background-color: #007bff; /* Bootstrap primary */
+}
+#btnDelete {
+    -fx-background-color: #dc3545; /* Bootstrap danger */
+}
+
+/* TableView - Bảng danh sách sản phẩm */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 5px;
+}
+.table-view .column-header-background {
+    -fx-background-color: #007bff;
+}
+.table-view .column-header {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+}
+.table-row-cell:odd {
+    -fx-background-color: #f8f9fa;
+}
+.table-row-cell:even {
+    -fx-background-color: #ffffff;
+}
+.table-row-cell:selected {
+    -fx-background-color: #80bdff;
+    -fx-text-fill: white;
+}
+
+/* Pagination - Thanh phân trang */
+.pagination {
+    -fx-background-color: transparent;
+}
+.pagination .page-button {
+    -fx-background-color: white;
+    -fx-border-color: #007bff;
+    -fx-text-fill: #007bff;
+}
+.pagination .page-button:hover {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
+}
