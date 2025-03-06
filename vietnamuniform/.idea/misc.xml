@@ -6,6 +6,7 @@
     </list>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+
  Updated upstream
 
 <component name="MavenProjectsManager">
@@ -17,7 +18,7 @@
 </component>
 
   <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="openjdk-23" project-jdk-type="JavaSDK">
- Stashed changes
+Stashed changes
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
