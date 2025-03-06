@@ -6,9 +6,10 @@
     </list>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
- HEAD
-  <component name="MavenProjectsManager">
- parent of c0b46c6 (Merge branch 'main' of https://github.com/Pineapple1525/VietnamUniform)
+
+ Updated upstream
+
+<component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
@@ -16,8 +17,9 @@
     </option>
 HEAD
 </component>
+
   <component name="ProjectRootManager" version="2" languageLevel="JDK_23" default="true" project-jdk-name="openjdk-23" project-jdk-type="JavaSDK">
- parent of c0b46c6 (Merge branch 'main' of https://github.com/Pineapple1525/VietnamUniform)
+Stashed changes
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
