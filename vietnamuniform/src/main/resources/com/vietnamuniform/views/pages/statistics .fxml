@@ -1,17 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.vietnamuniform.controller.StatisticsController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefHeight="600.0" prefWidth="900.0">
     <children>
-        <Label layoutX="185.0" layoutY="71.0" text="this is statistics" />
-    </children>
+        <TabPane layoutX="10.0" layoutY="10.0" prefWidth="880.0" prefHeight="580.0">
+            <!-- Tab 1: Thống kê doanh thu theo ngày -->
+            <Tab text="Thống kê doanh thu">
+                <AnchorPane>
+                    <DatePicker fx:id="startDatePicker" layoutX="10" layoutY="10" />
+                    <DatePicker fx:id="endDatePicker" layoutX="150" layoutY="10" />
+                    <Button text="Tìm kiếm" layoutX="300" layoutY="10" onAction="#searchRevenueStatistics" />
+                    <TableView fx:id="revenueTable" layoutX="5.0" layoutY="50.0" prefWidth="860.0" prefHeight="530.0">
+                        <columns>
+                            <TableColumn text="Ngày lập" fx:id="colDate" prefWidth="120"/>
+                            <TableColumn text="Tổng sản phẩm" fx:id="colTotalProducts" prefWidth="120"/>
+                            <TableColumn text="Tổng tiền đơn hàng" fx:id="colTotalAmount" prefWidth="150"/>
+                            <TableColumn text="Mã nhân viên" fx:id="colEmployeeId" prefWidth="100"/>
+                            <TableColumn text="Nhân viên lập hóa đơn" fx:id="colEmployeeName" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </AnchorPane>
+            </Tab>
 
+            <!-- Tab 2: Thống kê nhân viên -->
+            <Tab text="Thống kê nhân viên">
+                <AnchorPane>
+                    <TextField fx:id="searchEmployeeField" layoutX="10" layoutY="10" promptText="Nhập tên nhân viên"/>
+                    <Button text="Tìm kiếm" layoutX="200" layoutY="10" onAction="#searchEmployeeStatistics" />
+                    <TableView fx:id="employeeTable" layoutX="5.0" layoutY="50.0" prefWidth="860.0" prefHeight="530.0">
+                        <columns>
+                            <TableColumn text="Mã thống kê" fx:id="colStatId" prefWidth="100"/>
+                            <TableColumn text="Mã nhân viên" fx:id="colEmployeeIdEmp" prefWidth="100"/>
+                            <TableColumn text="Tên nhân viên" fx:id="colEmployeeNameEmp" prefWidth="150"/>
+                            <TableColumn text="Số hóa đơn" fx:id="colTotalOrders" prefWidth="120"/>
+                            <TableColumn text="Tổng tiền đơn hàng" fx:id="colTotalOrderAmount" prefWidth="150"/>
+                            <TableColumn text="Mã sản phẩm" fx:id="colEmployeeProductId" prefWidth="120"/> <!-- Đổi tên -->
+                            <TableColumn text="Tên sản phẩm" fx:id="colProduct" prefWidth="150"/>
+                            <TableColumn text="Giá nhập" fx:id="colImportPrice" prefWidth="100"/>
+                            <TableColumn text="Giá bán" fx:id="colSalePrice" prefWidth="100"/>
+                            <TableColumn text="Số lượng bán" fx:id="colQuantitySold" prefWidth="120"/>
+                        </columns>
+                    </TableView>
+                </AnchorPane>
+            </Tab>
+
+
+            <!-- Tab 3: Thống kê sản phẩm -->
+            <Tab text="Thống kê sản phẩm">
+                <AnchorPane>
+                    <TextField fx:id="searchProductField" layoutX="10" layoutY="10" promptText="Nhập tên sản phẩm"/>
+                    <Button text="Tìm kiếm" layoutX="200" layoutY="10" onAction="#searchProductStatistics" />
+                    <TableView fx:id="productTable" layoutX="5.0" layoutY="50.0" prefWidth="860.0" prefHeight="530.0">
+                        <columns>
+                            <TableColumn text="Mã sản phẩm" fx:id="colProductId" prefWidth="120"/>
+                            <TableColumn text="Tên sản phẩm" fx:id="colProductName" prefWidth="150"/>
+                            <TableColumn text="Chi tiết sản phẩm" fx:id="colProductDetail" prefWidth="200"/>
+                            <TableColumn text="Size" fx:id="colSize" prefWidth="80"/>
+                            <TableColumn text="Tổng sản phẩm" fx:id="colTotalStock" prefWidth="120"/>
+                            <TableColumn text="Số lượng bán" fx:id="colQuantitySoldProd" prefWidth="120"/>
+                            <TableColumn text="Số lượng còn" fx:id="colQuantityRemaining" prefWidth="120"/>
+                        </columns>
+                    </TableView>
+                </AnchorPane>
+            </Tab>
+        </TabPane>
+    </children>
 </AnchorPane>
