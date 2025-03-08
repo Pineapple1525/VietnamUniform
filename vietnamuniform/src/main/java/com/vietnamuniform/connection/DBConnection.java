@@ -5,41 +5,34 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
+
     private Connection conn;
 
+    private final String URL = "jdbc:mysql://localhost:3306/storemanagement";
+    private final String USERNAME = "root";
+    private final String PASSWORD = "";
+
     public DBConnection() {
-
-        // kiem tra xem da cos driver hay chua
-
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Không tìm thấy driver MySQL", e);
-        }
-
-        try {
-            this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/storemanagement", "root", "");
-            System.out.println("Kết nối thành công!");
+            conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
-            throw new RuntimeException("Lỗi kết nối đến MySQL", e);
+            System.out.println("Lỗi kết nối cơ sở dữ liệu: " + e.getMessage());
+            e.printStackTrace();
         }
-
     }
 
     public Connection getConn() {
         return conn;
     }
 
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
-
-    public void close(){
-        if (this.conn != null){
+    public void close() {
+        if (conn != null) {
             try {
-                this.conn.close();
+                conn.close();
+                System.out.println("Đã đóng kết nối cơ sở dữ liệu.");
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                System.out.println("Lỗi khi đóng kết nối: " + e.getMessage());
+                e.printStackTrace();
             }
         }
     }

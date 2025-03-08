@@ -1,17 +1,22 @@
 package com.vietnamuniform.controller;
 
 import com.vietnamuniform.connection.DBConnection;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javafx.event.ActionEvent;
-import javafx.scene.control.PasswordField;
-
 
 public class LoginController {
 
@@ -53,22 +58,19 @@ public class LoginController {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                // Đăng nhập thành công
                 String role = resultSet.getString("role");
                 showAlert(Alert.AlertType.INFORMATION, "Thông báo", "Đăng nhập thành công!");
-                //Chuyển đến trang tiếp theo dựa vào role
 
-                if ("admin".equals(role)) {
-                    // Chuyển đến trang admin (Ví dụ)
-                    System.out.println("Đang chuyển đến trang admin");
-                } else if ("employee".equals(role)) {
-                    // Chuyển đến trang employee (Ví dụ)
-                    System.out.println("Đang chuyển đến trang nhân viên");
+                if ("BOSS".equals(role)) {
+                    loadPage("/com/vietnamuniform/views/pages/employees.fxml", event, role);
+                } else if ("EMPLOYEE".equals(role)) {
+                    loadPage("/com/vietnamuniform/views/pages/employees.fxml", event, role);
+                } else if ("MANAGER".equals(role)) {
+                    loadPage("/com/vietnamuniform/views/pages/employees.fxml", event, role);
                 } else {
                     System.out.println("Vai trò không xác định");
                 }
             } else {
-                // Đăng nhập thất bại
                 showAlert(Alert.AlertType.ERROR, "Lỗi", "Tên đăng nhập hoặc mật khẩu không đúng!");
             }
         } catch (SQLException e) {
@@ -90,8 +92,30 @@ public class LoginController {
         alert.setContentText(content);
         alert.showAndWait();
     }
-    //close connection
-    public void closeConnection(){
+
+    public void closeConnection() {
         dbConnection.close();
+    }
+
+    private void loadPage(String page, ActionEvent event, String role) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(page));
+            Parent root = loader.load();
+            //lấy controller
+            EmployeeController employeeController = loader.getController();
+            employeeController.setCurrentRole(role);
+            // tạo scene
+            Scene scene = new Scene(root);
+            //Lấy stage
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            //set scene
+            stage.setScene(scene);
+            //show scene
+            stage.show();
+        } catch (IOException e) {
+            showAlert(Alert.AlertType.ERROR, "Lỗi", e.getMessage());
+            throw new RuntimeException(e);
+        }
+
     }
 }
