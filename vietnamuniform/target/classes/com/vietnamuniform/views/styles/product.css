@@ -1,221 +1,86 @@
-
-
-.anchor-pane * {
-    -fx-background-color: white;
+/* Định dạng chung */
+.root {
+    -fx-font-family: "Arial";
+    -fx-background-color: #f8f9fa;
 }
 
-
-.table-view {
-    -fx-background-color: white; /* Màu nền bảng */
-    -fx-font-family: "Arial"; /* Font chữ */
-    -fx-border-color: transparent; /* Xóa viền */
-    -fx-padding: 0px; /* Xóa khoảng đệm */
-    -fx-background-insets: 0;
-    -fx-border-insets: 0;
-    -fx-font-size: 1.3rem;
-}
-
-
-.table-view .column-header-background {
-    -fx-background-color: #cce2fd; /* Màu xanh dương nhạt */
-    -fx-padding: 10px 0; /* Tăng khoảng cách để làm chiều cao tiêu đề */
-    -fx-border-color: transparent; /* Xóa viền xung quanh tiêu đề */
-}
-
-.table-view .column-header {
-    -fx-background-color: #cce2fd; /* Màu xanh dương nhạt */
-    -fx-border-width: 0px 0px 3px 0px; /* Loại bỏ viền */
-    -fx-border-color: transparent; /* Đảm bảo không có viền */
-    -fx-alignment: center; /* Căn giữa nội dung tiêu đề */
-}
-
-/* Ẩn viền giữa các ô */
-.table-view .table-cell {
-    -fx-border-color: transparent;
-    -fx-alignment: center;
-}
-
-/* Ẩn viền giữa các hàng */
-.table-row-cell {
-    -fx-border-color: transparent;
-    -fx-background-insets: 0;
-    -fx-border-insets: 0;
-}
-
-/* Xóa viền bao quanh khi chọn */
-.table-row-cell:selected {
-    -fx-border-color: transparent;
-}
-
-/* Chiều cao của các dòng */
-.table-row-cell {
-    -fx-cell-size: 60px; /* Đặt chiều cao cho mỗi dòng */
-    -fx-border-color: #CCCCCC; /* Màu xám */
-    -fx-border-width: 0 0 1px 0;
-}
-
-/* Cứ cách một dòng trắng là một dòng xám nhẹ */
-.table-row-cell:odd {
-    -fx-background-color: #f2fbf5; /* Màu xanh nhẹ */
-}
-
-.table-row-cell:even {
-    -fx-background-color: white; /* Màu trắng */
-}
-
-/* Khi hover vào dòng */
-.table-row-cell:hover {
-   -fx-border-color: #d9f4e2;
-   -fx-border-width: 1px;
-
-}
-
-/* Khi dòng được chọn */
-.table-row-cell:selected {
-    -fx-background-color: #ADD8E6; /* Màu xanh nhạt */
-    -fx-text-fill: black;
-}
-
-/* Ẩn các dấu sổ giữa các cột */
-.table-view .column-header .label {
-    -fx-border-width: 0px;
-}
-.table-view .table-column {
-    -fx-border-width: 0px;
-}
-    #searchField {
-        -fx-pref-height: 30px; /* Chiều cao 30px */
-        -fx-border-color: transparent transparent black transparent; /* Chỉ có viền dưới */
-        -fx-border-width: 0 0 1px 0;
-        -fx-background-color: transparent;
-    }
-
-    /* Nút tìm kiếm với kính lúp màu xanh lá */
-    #searchButton {
-        -fx-text-fill: green; /* Màu xanh lá */
-        -fx-font-size: 1.5rem;
-        -fx-background-color: transparent;
-        -fx-border-color: transparent;
-    }
-.pagination {
-    -fx-background-color: transparent; /* Xóa nền tổng thể */
-    -fx-border-color: transparent; /* Xóa viền tổng thể */
-}
-
-/* Xóa viền và nền của các nút chuyển trang (prev & next) */
-.pagination .button {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-}
-
-/* Xóa nền và viền của số trang */
-.pagination .control-box {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-}
-
-/* Định dạng số trang */
-.pagination .toggle-button {
-    -fx-background-color: transparent;
-    -fx-border-color: transparent;
-    -fx-text-fill: black;
-    -fx-font-size: 14px;
-    -fx-padding: 5px 12px; /* Tăng khoảng cách để tránh bị cắt */
-    -fx-min-width: 30px; /* Đảm bảo độ rộng tối thiểu */
-    -fx-min-height: 30px; /* Đảm bảo chiều cao tối thiểu */
-}
-
-
-/* Khi số trang được chọn */
-.pagination .toggle-button:selected {
-    -fx-background-color: green; /* Nền xanh lá */
-
-    -fx-text-fill: white; /* Chữ trắng */
+/* TextField - Ô nhập liệu */
+.text-field {
+    -fx-padding: 8px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ced4da;
     -fx-background-radius: 5px;
-
+    -fx-background-color: white;
+    -fx-font-size: 14px;
+}
+.text-field:focused {
+    -fx-border-color: #80bdff;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,123,255,0.25), 5, 0, 0, 0);
 }
 
-/* Bỏ số đếm ở dưới số trang */
-.pagination .page-information {
-    -fx-opacity: 0; /* Ẩn số trang hiển thị */
+/* Button - Các nút bấm */
+.button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+    -fx-text-fill: white;
 }
-/* Ẩn nền thanh cuộn để chỉ hiển thị thanh trượt */
-.table-view .scroll-bar {
+
+.button:hover {
+    -fx-opacity: 0.8;
+}
+
+/* Màu cho từng loại nút */
+#btnAdd {
+    -fx-background-color: #28a745; /* Bootstrap success */
+}
+#btnUpdate {
+    -fx-background-color: #007bff; /* Bootstrap primary */
+}
+#btnDelete {
+    -fx-background-color: #dc3545; /* Bootstrap danger */
+}
+
+/* TableView - Bảng danh sách sản phẩm */
+.table-view {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 5px;
+}
+.table-view .column-header-background {
+    -fx-background-color: #007bff;
+}
+.table-view .column-header {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
     -fx-background-color: transparent;
 }
-
-/* Định dạng thanh trượt dọc */
-.table-view .scroll-bar:vertical .thumb {
-    -fx-background-color: #cce2fd; /* Màu xanh */
-    -fx-background-radius: 10px; /* Bo tròn góc */
+.table-row-cell:odd {
+    -fx-background-color: #f8f9fa;
+}
+.table-row-cell:even {
+    -fx-background-color: #ffffff;
+}
+.table-row-cell:selected {
+    -fx-background-color: #80bdff;
+    -fx-text-fill: white;
 }
 
-/* Định dạng thanh trượt ngang */
-.table-view .scroll-bar:horizontal .thumb {
-    -fx-background-color: #cce2fd;
-    -fx-background-radius: 10px;
-}
-
-/* Khi di chuột vào thanh trượt */
-.table-view .scroll-bar .thumb:hover {
-    -fx-background-color: #A9C9FC; /* Xám đậm hơn */
-}
-
-/* Khi nhấn vào thanh trượt */
-.table-view .scroll-bar .thumb:pressed {
-    -fx-background-color: #A9C9FC; /* Xám đậm hơn nữa */
-}
-
-/* Màu của track (đường chạy của thanh cuộn) */
-.table-view .scroll-bar .track {
-    -fx-background-color: #cce2fd; /* Màu sáng hơn */
-    -fx-background-radius: 10px;
-}
-
-/* Ẩn mũi tên lên/xuống của thanh cuộn */
-.table-view .scroll-bar .increment-button,
-.table-view .scroll-bar .decrement-button {
-    -fx-opacity: 0;
-    -fx-padding: 0;
+/* Pagination - Thanh phân trang */
+.pagination {
     -fx-background-color: transparent;
 }
-/* Ẩn nền mặc định của thanh cuộn */
-.scroll-pane .scroll-bar {
-    -fx-background-color: #cce2fd;
+.pagination .page-button {
+    -fx-background-color: white;
+    -fx-border-color: #007bff;
+    -fx-text-fill: #007bff;
 }
-
-/* Tùy chỉnh thanh cuộn dọc */
-.scroll-pane .scroll-bar:vertical .thumb {
-    -fx-background-color: #cce2fd; /* Màu xanh nhạt */
-    -fx-background-radius: 10px; /* Bo góc */
-}
-
-/* Tùy chỉnh thanh cuộn ngang */
-.scroll-pane .scroll-bar:horizontal .thumb {
-    -fx-background-color: #A9C9FC;
-    -fx-background-radius: 10px;
-}
-
-/* Khi di chuột vào thanh cuộn */
-.scroll-pane .scroll-bar .thumb:hover {
-    -fx-background-color: #A9C9FC; /* Màu xanh đậm hơn */
-}
-
-/* Khi nhấn vào thanh cuộn */
-.scroll-pane .scroll-bar .thumb:pressed {
-    -fx-background-color: #8ab0f0;
-}
-
-/* Màu nền của track */
-.scroll-pane .scroll-bar .track {
-    -fx-background-color: #e6f0ff; /* Màu sáng hơn */
-    -fx-background-radius: 10px;
-}
-
-/* Ẩn các nút tăng/giảm của thanh cuộn */
-.scroll-pane .scroll-bar .increment-button,
-.scroll-pane .scroll-bar .decrement-button {
-    -fx-opacity: 0;
-    -fx-padding: 0;
-    -fx-background-color: transparent;
+.pagination .page-button:hover {
+    -fx-background-color: #007bff;
+    -fx-text-fill: white;
 }

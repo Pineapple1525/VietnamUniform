@@ -13,14 +13,12 @@ import java.sql.SQLException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/vietnamuniform/views/pages/main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        // Load trang login đầu tiên
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/com/vietnamuniform/views/pages/login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1024, 627);
         stage.setTitle("Việt phục Việt Nam");
         stage.setScene(scene);
         stage.show();
-        // hi
-
     }
 
     public static void main(String[] args) {

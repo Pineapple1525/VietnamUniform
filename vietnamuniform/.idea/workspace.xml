@@ -4,7 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5ff56135-c69e-44ea-ab8e-6fa89c621ff7" name="Changes" comment="" />
+    <list default="true" id="5ff56135-c69e-44ea-ab8e-6fa89c621ff7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/connection/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/connection/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/EmployeeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/employees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/employees.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/connection/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/connection/DBConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/DBConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/EmployeeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/LayoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/LayoutController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/ProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/StatisticsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/StatisticsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/pages/exit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/pages/exit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/pages/statistics .fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/pages/statistics .fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/styles/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/styles/product.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +41,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="nguyên" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -51,14 +78,20 @@
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;pineapple&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;nguyên&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/vidu_project/ancientCostume&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -67,20 +100,13 @@
       <recent name="D:\Project2\vietnamuniform\src\main\resources\com\vietnamuniform\views\images\icons" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="vietnamuniform" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="vietnamuniform" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23726.103" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23726.103" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -90,7 +116,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1739898631882</updated>
+      <workItem from="1741459944398" duration="37000" />
+      <workItem from="1741460041244" duration="1356000" />
+      <workItem from="1741461415896" duration="697000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

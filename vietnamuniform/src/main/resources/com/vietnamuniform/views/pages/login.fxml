@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,49 +12,53 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="1038.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="1024.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vietnamuniform.controller.LoginController">
     <children>
         <BorderPane prefHeight="627.0" prefWidth="1038.0" style="-fx-background-color: #fff;">
             <left>
-                <Pane prefHeight="678.0" prefWidth="478.0" style="-fx-background-image: url('../../img/aodailogin.jpg'); -fx-background-size: cover;" BorderPane.alignment="CENTER" />
+                <Pane prefHeight="627.0" prefWidth="503.0" style="-fx-background-image: url('../../img/aodailogin.jpg'); -fx-background-size: cover;" BorderPane.alignment="CENTER">
+                    <children>
+                        <ImageView fitHeight="644.0" fitWidth="502.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/aodailogin.jpg" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
             </left>
             <center>
                 <Pane prefHeight="678.0" prefWidth="483.0" BorderPane.alignment="CENTER">
                     <children>
-                        <StackPane layoutX="-1.0" prefHeight="678.0" prefWidth="562.0">
+                        <StackPane layoutX="-1.0" prefHeight="627.0" prefWidth="536.0">
                             <children>
-                                <Pane prefHeight="200.0" prefWidth="200.0">
+                                <Pane prefHeight="585.0" prefWidth="453.0">
                                     <children>
-                                        <TextField layoutX="123.0" layoutY="200.0" prefHeight="50.0" prefWidth="330.0" promptText="emailexemplo@gmail.com" />
-                                        <TextField layoutX="123.0" layoutY="299.0" prefHeight="50.0" prefWidth="330.0" promptText="Enter 8 characters or more" />
-                                        <Button layoutX="296.0" layoutY="419.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #892971;" text="Sign in" textFill="WHITE" />
+                                        <TextField fx:id="emailField" layoutX="123.0" layoutY="200.0" prefHeight="50.0" prefWidth="330.0" promptText="emailexemplo@gmail.com" />
+                                        <PasswordField fx:id="passwordField" layoutX="123.0" layoutY="299.0" prefHeight="50.0" prefWidth="330.0" promptText="Enter 8 characters or more" />
+                                        <Button fx:id="signInButton" layoutX="296.0" layoutY="419.0" mnemonicParsing="false" onAction="#handleSignIn" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #892971;" text="Sign in" textFill="WHITE" />
                                         <Label layoutX="121.0" layoutY="164.0" prefHeight="27.0" prefWidth="45.0" text="Email">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label layoutX="123.0" layoutY="265.0" text="Label">
+                                        <Label layoutX="123.0" layoutY="265.0" text="Password">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Label>
-                                        <Button layoutX="315.0" layoutY="358.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Forgot password?" />
-                                        <Button layoutX="123.0" layoutY="419.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="165.0" style="-fx-background-color: #000055; -fx-border-color: transparent;" text="Sign up" textFill="WHITE" />
+                                        <Button layoutX="324.0" layoutY="366.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Forgot password?" />
+                                        <Button fx:id="signUpButton" layoutX="123.0" layoutY="419.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="45.0" prefWidth="165.0" style="-fx-background-color: #000055; -fx-border-color: transparent;" text="Sign up" textFill="WHITE" />
                                         <Label layoutX="121.0" layoutY="92.0" prefHeight="35.0" prefWidth="129.0" text="GET Started">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <ImageView fitHeight="97.0" fitWidth="98.0" layoutX="465.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/logoaodai.jpg" />
-                                            </image>
-                                        </ImageView>
                                     </children>
                                 </Pane>
                             </children>
                         </StackPane>
-                    </children></Pane>
+                    </children>
+                </Pane>
             </center>
         </BorderPane>
     </children>
