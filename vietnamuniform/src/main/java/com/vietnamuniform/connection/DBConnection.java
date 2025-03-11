@@ -18,7 +18,7 @@ public class DBConnection {
         }
 
         try {
-            this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/storemanagement", "root", "duy2692005");
+            this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/storemanagement", "root", "");
             System.out.println("Kết nối thành công!");
         } catch (SQLException e) {
             throw new RuntimeException("Lỗi kết nối đến MySQL", e);

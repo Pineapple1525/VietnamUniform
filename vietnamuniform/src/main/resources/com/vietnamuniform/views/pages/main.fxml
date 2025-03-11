@@ -25,7 +25,7 @@
                         <Image url="@../images/z6343478924285_f68ce1ce61c95fe215311d2464aab2f7.jpg" />
                      </image>
                   </ImageView>
-                  <Label contentDisplay="CENTER" text="Viet Nam traditional costume" textFill="WHITE">
+                  <Label contentDisplay="CENTER" text="Việt phục Việt Nam" textFill="WHITE">
                      <padding>
                         <Insets left="10.0" top="30.0" />
                      </padding>
@@ -41,7 +41,7 @@
          <left>
             <VBox prefHeight="51.0" prefWidth="230.0" style="-fx-background-color: #1a3565;" stylesheets="@../styles/main.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="productsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#loadProducts" prefHeight="51.0" prefWidth="237.0" text="Products" textFill="WHITE">
+                  <Button fx:id="productsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" mnemonicParsing="false" onAction="#loadProducts" prefHeight="51.0" prefWidth="237.0" text="Sản phẩm" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -57,7 +57,7 @@
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin></Button>
-                  <Button fx:id="customerBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadCustomers" prefHeight="51.0" prefWidth="230.0" text="Customers" textFill="WHITE">
+                  <Button fx:id="customerBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#loadCustomers" prefHeight="51.0" prefWidth="230.0" text="Khách hàng" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -74,7 +74,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="EmployeeBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="45.0" mnemonicParsing="false" onAction="#loadEmployees" prefHeight="51.0" prefWidth="230.0" text="Employees" textFill="WHITE">
+                  <Button fx:id="employeeBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="45.0" mnemonicParsing="false" onAction="#loadEmployees" prefHeight="51.0" prefWidth="230.0" text="Nhân viên" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -91,7 +91,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="oderBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" onAction="#loadOder" prefHeight="51.0" prefWidth="230.0" text="Oders" textFill="WHITE">
+                  <Button fx:id="oderBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="81.0" mnemonicParsing="false" onAction="#loadOder" prefHeight="51.0" prefWidth="230.0" text="Đơn hàng" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -108,7 +108,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="oder_detailsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="116.0" mnemonicParsing="false" onAction="#loadOder_details" prefHeight="51.0" prefWidth="230.0" text="Oder Details" textFill="WHITE">
+                  <Button fx:id="oder_detailsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="116.0" mnemonicParsing="false" onAction="#loadOder_details" prefHeight="51.0" prefWidth="230.0" text="Chi tiết đơn hàng" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -125,7 +125,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="statisticsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="151.0" mnemonicParsing="false" onAction="#loadstatistics" prefHeight="51.0" prefWidth="230.0" text="Statistics " textFill="WHITE">
+                  <Button fx:id="statisticsBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="151.0" mnemonicParsing="false" onAction="#loadstatistics" prefHeight="51.0" prefWidth="230.0" text="Thống kê " textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -142,7 +142,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Button>
-                  <Button fx:id="exitBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="187.0" mnemonicParsing="false" onAction="#loadExit" prefHeight="51.0" prefWidth="230.0" text="Exit" textFill="WHITE">
+                  <Button fx:id="exitBtn" alignment="BASELINE_LEFT" graphicTextGap="10.0" layoutX="10.0" layoutY="187.0" mnemonicParsing="false" onAction="#loadExit" prefHeight="51.0" prefWidth="230.0" text="Thoát" textFill="WHITE">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>

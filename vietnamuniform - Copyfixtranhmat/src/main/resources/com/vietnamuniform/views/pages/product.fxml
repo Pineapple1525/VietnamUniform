@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fitToWidth="true" pannable="true" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vietnamuniform.controller.ProductController">
+    <content>
+        <AnchorPane minHeight="800" prefHeight="847.0" prefWidth="1345.0" style="-fx-background-color: white; -fx-font-size: 13px;" stylesheets="@../styles/product.css">
+            <children>
+                <!-- Thanh tìm kiếm -->
+                <TextField fx:id="searchField" layoutX="50" layoutY="20" prefWidth="300" promptText="Search...">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="searchButton" layoutX="360" layoutY="15" style="-fx-font-size: 20px;" text="🔍" />
+
+                <!-- Các trường nhập liệu -->
+                <TextField fx:id="txtName" layoutX="50" layoutY="60" prefWidth="225" promptText="Tên sản phẩm" />
+                <TextField fx:id="txtDescription" layoutX="300" layoutY="60" prefWidth="225" promptText="Mô tả" />
+                <TextField fx:id="txtImportPrice" layoutX="550" layoutY="60" prefWidth="225" promptText="Giá nhập" />
+                <TextField fx:id="txtSalePrice" layoutX="800" layoutY="60" prefWidth="225" promptText="Giá bán" />
+                <TextField fx:id="txtQuantity" layoutX="50" layoutY="100" prefWidth="225" promptText="Số lượng" />
+                <TextField fx:id="txtCategory" layoutX="300" layoutY="100" prefWidth="225" promptText="Danh mục" />
+                <TextField fx:id="txtManufactureDate" layoutX="550" layoutY="100" prefWidth="225" promptText="Ngày sản xuất" />
+                <TextField fx:id="txtImageUrl" layoutX="800" layoutY="100" prefWidth="225" promptText="Ảnh URL" />
+
+                <!-- Các nút thao tác -->
+                <Button fx:id="btnAdd" layoutX="50" layoutY="140" style="-fx-background-color: green; -fx-background-radius:3px;" text="➕ Thêm" textFill="WHITE" />
+                <Button fx:id="btnUpdate" layoutX="150" layoutY="140" style="-fx-background-color: blue; -fx-background-radius:3px;" text="✏️ Sửa" textFill="WHITE" />
+                <Button fx:id="btnDelete" layoutX="250" layoutY="140" style="-fx-background-color: red; -fx-background-radius:3px;" text="❌ Xóa" textFill="WHITE" />
+
+                <!-- Bảng danh sách sản phẩm -->
+                <TableView fx:id="productTable" layoutX="-3.0" layoutY="180.0" prefHeight="614.0" prefWidth="1065.0">
+                    <columns>
+                        <TableColumn fx:id="colImage" prefWidth="75.0" text="Ảnh" />
+                        <TableColumn fx:id="colId" prefWidth="107.99996948242188" text="Mã sản phẩm" />
+                        <TableColumn fx:id="colName" prefWidth="107.99996948242188" text="Tên sản phẩm" />
+                        <TableColumn fx:id="colImportPrice" prefWidth="110.66668701171875" text="Giá nhập (VNĐ)" />
+                        <TableColumn fx:id="colSalePrice" prefWidth="103.33331298828125" text="Giá bán (VNĐ)" />
+                        <TableColumn fx:id="colQuantity" prefWidth="84.66668701171875" text="Số lượng" />
+                        <TableColumn fx:id="colCategory" prefWidth="84.0" text="Danh mục" />
+                        <TableColumn fx:id="colManufactureDate" prefWidth="128.0" text="Ngày sản xuất" />
+                        <TableColumn fx:id="colDescription" minWidth="0.0" prefWidth="98.00006103515625" text="Mô tả" />
+                        <TableColumn fx:id="colAction" prefWidth="161.33333333333326" text="Hành động" />
+                    </columns>
+                </TableView>
+
+                <!-- Thanh phân trang -->
+                <Pagination fx:id="pagination" layoutX="99.0" layoutY="793.0" maxPageIndicatorCount="5" prefHeight="50" prefWidth="1100" style="-fx-border-color: none;">
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                </Pagination>
+            </children>
+        </AnchorPane>
+    </content>
+</ScrollPane>

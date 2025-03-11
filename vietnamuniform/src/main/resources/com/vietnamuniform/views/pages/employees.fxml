@@ -1,18 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.vietnamuniform.controller.EmployeeController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="185.0" layoutY="71.0" text="this is employees" />
-    </children>
+<ScrollPane fitToWidth="true" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vietnamuniform.controller.EmployeeController">
+    <content>
+        <AnchorPane minHeight="400" minWidth="900" style="-fx-background-color: white; -fx-font-size: 13px;" stylesheets="@../styles/product.css">
+            <children>
+                <!-- Thanh tìm kiếm -->
+                <TextField fx:id="searchField" layoutX="50" layoutY="20" prefWidth="300" promptText="Search...">
+                    <font>
+                        <Font size="15.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="searchButton" layoutX="360" layoutY="20" style="-fx-font-size: 18px;" text="🔍" />
 
+                <!-- Các trường nhập liệu -->
+                <TextField fx:id="txtCodeEmployee" layoutX="50" layoutY="70" prefWidth="225" promptText="Mã nhân viên" />
+                <TextField fx:id="txtFullname" layoutX="300" layoutY="70" prefWidth="225" promptText="Họ và tên" />
+                <ComboBox fx:id="cmbGender" layoutX="550" layoutY="70" prefWidth="225">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Men" />
+                            <String fx:value="Women" />
+                            <String fx:value="Other" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <DatePicker fx:id="txtBirthdate" layoutX="800" layoutY="70" prefWidth="225" promptText="Ngày sinh" />
+                <TextField fx:id="txtAddress" layoutX="50" layoutY="120" prefWidth="225" promptText="Địa chỉ" />
+                <TextField fx:id="txtPhone" layoutX="300" layoutY="120" prefWidth="225" promptText="Số điện thoại" />
+                <TextField fx:id="txtUsername" layoutX="550" layoutY="120" prefWidth="225" promptText="Tên đăng nhập" />
+                <PasswordField fx:id="txtPassword" layoutX="800" layoutY="120" prefWidth="225" promptText="Mật khẩu" />
+                <ComboBox fx:id="cmbRole"  layoutX="50" layoutY="170" prefWidth="225">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Boss" />
+                            <String fx:value="Manager" />
+                            <String fx:value="Employee" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
 
-</AnchorPane>
+                <!-- Các nút thao tác -->
+                <Button fx:id="btnAdd" layoutX="300" layoutY="170"
+                        style="-fx-background-color: green; -fx-background-radius: 3px;"
+                        text="➕ Thêm" textFill="WHITE" onAction="#handleAddAction"/>
+                <Button fx:id="btnUpdate" layoutX="450" layoutY="170"
+                        style="-fx-background-color: blue; -fx-background-radius: 3px;"
+                        text="✏️ Sửa" textFill="WHITE" onAction="#handleUpdateAction"/>
+                <Button fx:id="btnDelete" layoutX="600" layoutY="170"
+                        style="-fx-background-color: red; -fx-background-radius: 3px;"
+                        text="❌ Xóa" textFill="WHITE" onAction="#handleDeleteAction"/>
+
+                <!-- Bảng danh sách nhân viên -->
+                <TableView fx:id="employeeTable" layoutX="-3.0" layoutY="220.0" prefHeight="599.0" prefWidth="1070.0">
+                    <columns>
+                        <TableColumn fx:id="colCodeEmployee" prefWidth="81.333" text="Mã NV" />
+                        <TableColumn fx:id="colFullname" prefWidth="98.666" text="Họ và tên" />
+                        <TableColumn fx:id="colGender" prefWidth="85.333" text="Giới tính" />
+                        <TableColumn fx:id="colBirthdate" prefWidth="140.0" text="Ngày sinh" />
+                        <TableColumn fx:id="colAddress" prefWidth="138.666" text="Địa chỉ" />
+                        <TableColumn fx:id="colPhone" prefWidth="122.666" text="Số điện thoại" />
+                        <TableColumn fx:id="colUsername" prefWidth="130.666" text="Tên đăng nhập" />
+                        <TableColumn fx:id="colPassword" prefWidth="130.666" text="Mật khẩu" />
+                        <TableColumn fx:id="colRole" prefWidth="93.333" text="Chức vụ" />
+<!--                        <TableColumn fx:id="colAction" prefWidth="177.999" text="Hành động" />-->
+                    </columns>
+                </TableView>
+
+                <!-- Thanh phân trang -->
+                <Pagination fx:id="pagination" layoutX="99.0" layoutY="830.0" maxPageIndicatorCount="5" prefHeight="50" prefWidth="1100" style="-fx-border-color: none;">
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                </Pagination>
+            </children>
+        </AnchorPane>
+    </content>
+</ScrollPane>

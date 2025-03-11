@@ -10,4 +10,8 @@ module com.vietnamuniform {
     exports com.vietnamuniform;
     exports com.vietnamuniform.controller;
     opens com.vietnamuniform.controller to javafx.fxml;
+
+    opens com.vietnamuniform.model to javafx.base;
 }
+
+
