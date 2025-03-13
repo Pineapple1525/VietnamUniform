@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private Connection conn;
+    private static Connection conn;
 
     public DBConnection() {
 
@@ -18,7 +18,7 @@ public class DBConnection {
         }
 
         try {
-            this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/storemanagement", "root", "");
+            this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/storemanagement", "root", "duy2692005");
             System.out.println("Kết nối thành công!");
         } catch (SQLException e) {
             throw new RuntimeException("Lỗi kết nối đến MySQL", e);
@@ -26,7 +26,7 @@ public class DBConnection {
 
     }
 
-    public Connection getConn() {
+    public static Connection getConn() {
         return conn;
     }
 

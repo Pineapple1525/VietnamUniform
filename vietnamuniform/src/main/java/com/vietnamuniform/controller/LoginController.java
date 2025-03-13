@@ -1,6 +1,6 @@
 package com.vietnamuniform.controller;
 
-import com.vietnamuniform.connect.ConnectDatabase;
+import com.vietnamuniform.connection.DBConnection;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -43,7 +43,7 @@ public class LoginController {
 
     private boolean authenticateUser(String email, String password) {
         String query = "SELECT password FROM Users WHERE email = ?";
-        try (Connection conn = ConnectDatabase.getConnection();
+        try (Connection conn = DBConnection.getConn();
              PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();

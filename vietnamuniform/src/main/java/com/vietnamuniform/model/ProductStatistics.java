@@ -1,11 +1,11 @@
 package com.vietnamuniform.model;
 
 public class ProductStatistics {
-    private int productId, totalStock, quantitySold, quantityRemaining;
-    private String productName, productDetail, size;
+    private String codeProduct, productName, productDetail, size;
+    private int totalStock, quantitySold, quantityRemaining;
 
-    public ProductStatistics(int productId, String productName, String productDetail, String size, int totalStock, int quantitySold, int quantityRemaining) {
-        this.productId = productId;
+    public ProductStatistics(String codeProduct, String productName, String productDetail, String size, int totalStock, int quantitySold, int quantityRemaining) {
+        this.codeProduct = codeProduct;
         this.productName = productName;
         this.productDetail = productDetail;
         this.size = size;
@@ -14,7 +14,7 @@ public class ProductStatistics {
         this.quantityRemaining = quantityRemaining;
     }
 
-    public int getProductId() { return productId; }
+    public String getCodeProduct() { return codeProduct; }
     public String getProductName() { return productName; }
     public String getProductDetail() { return productDetail; }
     public String getSize() { return size; }
@@ -22,4 +22,3 @@ public class ProductStatistics {
     public int getQuantitySold() { return quantitySold; }
     public int getQuantityRemaining() { return quantityRemaining; }
 }
-
