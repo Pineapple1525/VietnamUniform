@@ -1,24 +1,24 @@
 package com.vietnamuniform.model;
+import java.time.LocalDate;
 
 public class ProductStatistics {
-    private String codeProduct, productName, productDetail, size;
-    private int totalStock, quantitySold, quantityRemaining;
+    private int statId;
+    private LocalDate reportDate;
+    private int productId;
+    private String productName;
+    private double price;
 
-    public ProductStatistics(String codeProduct, String productName, String productDetail, String size, int totalStock, int quantitySold, int quantityRemaining) {
-        this.codeProduct = codeProduct;
+    public ProductStatistics(int statId, LocalDate reportDate, int productId, String productName, double price) {
+        this.statId = statId;
+        this.reportDate = reportDate;
+        this.productId = productId;
         this.productName = productName;
-        this.productDetail = productDetail;
-        this.size = size;
-        this.totalStock = totalStock;
-        this.quantitySold = quantitySold;
-        this.quantityRemaining = quantityRemaining;
+        this.price = price;
     }
 
-    public String getCodeProduct() { return codeProduct; }
+    public int getStatId() { return statId; }
+    public LocalDate getReportDate() { return reportDate; }
+    public int getProductId() { return productId; }
     public String getProductName() { return productName; }
-    public String getProductDetail() { return productDetail; }
-    public String getSize() { return size; }
-    public int getTotalStock() { return totalStock; }
-    public int getQuantitySold() { return quantitySold; }
-    public int getQuantityRemaining() { return quantityRemaining; }
+    public double getPrice() { return price; }
 }

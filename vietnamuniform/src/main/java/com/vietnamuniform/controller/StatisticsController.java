@@ -90,7 +90,13 @@ public class StatisticsController {
 
 
     private void loadAllRevenueStatistics() {
-        String query = "SELECT report_date, total_products, total_amount, code_employee, employee_name FROM revenue_statistics";
+        String query = """
+        SELECT rs.report_date, rs.order_id, rs.employee_id, 
+               e.name AS employee_name, o.total_amount
+        FROM revenue_statistics rs
+        JOIN employees e ON rs.employee_id = e.employee_id
+        JOIN orders o ON rs.order_id = o.order_id
+    """;
         ObservableList<RevenueStatistics> revenueList = FXCollections.observableArrayList();
 
         try (Connection conn = new DBConnection().getConn();
@@ -99,10 +105,10 @@ public class StatisticsController {
             while (rs.next()) {
                 revenueList.add(new RevenueStatistics(
                         rs.getDate("report_date").toLocalDate(),
-                        rs.getInt("total_products"),
-                        rs.getDouble("total_amount"),
-                        rs.getString("code_employee"),
-                        rs.getString("employee_name")
+                        rs.getInt("order_id"),
+                        rs.getInt("employee_id"),
+                        rs.getString("employee_name"),
+                        rs.getDouble("total_amount")
                 ));
             }
             revenueTable.setItems(revenueList);
@@ -111,10 +117,15 @@ public class StatisticsController {
         }
     }
 
+
     private void loadAllEmployeeStatistics() {
-        String query = "SELECT stat_id, code_employee, employee_name, order_count, total_amount, " +
-                "code_product AS employee_product_id, product_name, import_price, sale_price, quantity_sold " +
-                "FROM employee_statistics";
+        String query = """
+        SELECT es.stat_id, es.report_date, es.order_id, es.employee_id, es.product_id, 
+               e.name AS employee_name, p.product_name
+        FROM employee_statistics es
+        JOIN employees e ON es.employee_id = e.employee_id
+        JOIN products p ON es.product_id = p.product_id
+    """;
         ObservableList<EmployeeStatistics> employeeList = FXCollections.observableArrayList();
 
         try (Connection conn = new DBConnection().getConn();
@@ -124,15 +135,12 @@ public class StatisticsController {
             while (rs.next()) {
                 employeeList.add(new EmployeeStatistics(
                         rs.getInt("stat_id"),
-                        rs.getString("code_employee"), // Sửa employee_id thành code_employee
+                        rs.getDate("report_date").toLocalDate(),
+                        rs.getInt("order_id"),
+                        rs.getInt("employee_id"),
                         rs.getString("employee_name"),
-                        rs.getInt("order_count"),
-                        rs.getDouble("total_amount"),
-                        rs.getString("employee_product_id"), // Sửa employee_product_id thành kiểu String
-                        rs.getString("product_name"),
-                        rs.getDouble("import_price"),
-                        rs.getDouble("sale_price"),
-                        rs.getInt("quantity_sold")
+                        rs.getInt("product_id"),
+                        rs.getString("product_name")
                 ));
             }
             employeeTable.setItems(employeeList);
@@ -142,8 +150,13 @@ public class StatisticsController {
     }
 
 
+
     private void loadAllProductStatistics() {
-        String query = "SELECT code_product, product_name, product_detail, size, total_stock, quantity_sold, quantity_remaining FROM product_statistics";
+        String query = """
+        SELECT ps.stat_id, ps.report_date, ps.product_id, p.product_name, p.price
+        FROM product_statistics ps
+        JOIN products p ON ps.product_id = p.product_id
+    """;
         ObservableList<ProductStatistics> productList = FXCollections.observableArrayList();
 
         try (Connection conn = new DBConnection().getConn();
@@ -152,13 +165,11 @@ public class StatisticsController {
 
             while (rs.next()) {
                 productList.add(new ProductStatistics(
-                        rs.getString("code_product"),
+                        rs.getInt("stat_id"),
+                        rs.getDate("report_date").toLocalDate(),
+                        rs.getInt("product_id"),
                         rs.getString("product_name"),
-                        rs.getString("product_detail"),
-                        rs.getString("size"),
-                        rs.getInt("total_stock"),
-                        rs.getInt("quantity_sold"),
-                        rs.getInt("quantity_remaining")
+                        rs.getDouble("price")
                 ));
             }
             productTable.setItems(productList);
@@ -166,6 +177,7 @@ public class StatisticsController {
             e.printStackTrace();
         }
     }
+
 
 
     @FXML
@@ -176,13 +188,16 @@ public class StatisticsController {
             showAlert("Vui lòng chọn đầy đủ ngày bắt đầu và kết thúc!", Alert.AlertType.WARNING);
             return;
         }
-        if (startDate.isAfter(endDate)) { // Thêm kiểm tra hợp lệ
+        if (startDate.isAfter(endDate)) {
             showAlert("Ngày bắt đầu không được lớn hơn ngày kết thúc!", Alert.AlertType.WARNING);
             return;
         }
 
-        String query = "SELECT report_date, total_products, total_amount, code_employee, employee_name " +
-                "FROM revenue_statistics WHERE report_date BETWEEN ? AND ?";
+        String query = "SELECT rs.report_date, o.order_id, e.employee_id, e.employee_name, rs.total_amount " +
+                "FROM revenue_statistics rs " +
+                "JOIN orders o ON rs.order_id = o.order_id " +
+                "JOIN employees e ON rs.employee_id = e.employee_id " +
+                "WHERE rs.report_date BETWEEN ? AND ?";
         ObservableList<RevenueStatistics> revenueList = FXCollections.observableArrayList();
 
         try (Connection conn = new DBConnection().getConn();
@@ -190,13 +205,14 @@ public class StatisticsController {
             ps.setDate(1, java.sql.Date.valueOf(startDate));
             ps.setDate(2, java.sql.Date.valueOf(endDate));
             ResultSet rs = ps.executeQuery();
+
             while (rs.next()) {
                 revenueList.add(new RevenueStatistics(
                         rs.getDate("report_date").toLocalDate(),
-                        rs.getInt("total_products"),
-                        rs.getDouble("total_amount"),
-                        rs.getString("code_employee"),
-                        rs.getString("employee_name")
+                        rs.getInt("order_id"),
+                        rs.getInt("employee_id"),
+                        rs.getString("employee_name"),
+                        rs.getDouble("total_amount")
                 ));
             }
             revenueTable.setItems(revenueList);
@@ -204,7 +220,6 @@ public class StatisticsController {
             showAlert("Lỗi tìm kiếm doanh thu: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
-
 
     @FXML
     private void searchEmployeeStatistics() {
@@ -214,9 +229,13 @@ public class StatisticsController {
             return;
         }
 
-        String query = "SELECT stat_id, code_employee, employee_name, order_count, total_amount, " +
-                "code_product AS employee_product_id, product_name, import_price, sale_price, quantity_sold " +
-                "FROM employee_statistics WHERE employee_name LIKE ?";
+        String query = "SELECT es.stat_id, es.report_date, o.order_id, e.employee_id, e.employee_name, " +
+                "p.product_id, p.product_name " +
+                "FROM employee_statistics es " +
+                "JOIN employees e ON es.employee_id = e.employee_id " +
+                "JOIN orders o ON es.order_id = o.order_id " +
+                "JOIN products p ON es.product_id = p.product_id " +
+                "WHERE e.employee_name LIKE ?";
         ObservableList<EmployeeStatistics> employeeList = FXCollections.observableArrayList();
 
         try (Connection conn = new DBConnection().getConn();
@@ -227,51 +246,46 @@ public class StatisticsController {
             while (rs.next()) {
                 employeeList.add(new EmployeeStatistics(
                         rs.getInt("stat_id"),
-                        rs.getString("code_employee"), // Sửa employee_id thành code_employee
+                        rs.getDate("report_date").toLocalDate(),
+                        rs.getInt("order_id"),
+                        rs.getInt("employee_id"),
                         rs.getString("employee_name"),
-                        rs.getInt("order_count"),
-                        rs.getDouble("total_amount"),
-                        rs.getString("employee_product_id"), // Sửa employee_product_id thành kiểu String
-                        rs.getString("product_name"),
-                        rs.getDouble("import_price"),
-                        rs.getDouble("sale_price"),
-                        rs.getInt("quantity_sold")
+                        rs.getInt("product_id"),
+                        rs.getString("product_name")
                 ));
             }
             employeeTable.setItems(employeeList);
         } catch (SQLException e) {
-            e.printStackTrace();
+            showAlert("Lỗi tìm kiếm nhân viên: " + e.getMessage(), Alert.AlertType.ERROR);
         }
     }
-
 
     @FXML
     private void searchProductStatistics() {
         String keyword = searchProductField.getText().trim();
-
         if (keyword.isEmpty()) {
             showAlert("Vui lòng nhập tên sản phẩm cần tìm!", Alert.AlertType.WARNING);
             return;
         }
 
-        String query = "SELECT code_product, product_name, product_detail, size, total_stock, quantity_sold, quantity_remaining FROM product_statistics WHERE product_name LIKE ?";
+        String query = "SELECT ps.stat_id, ps.report_date, p.product_id, p.product_name, p.price " +
+                "FROM product_statistics ps " +
+                "JOIN products p ON ps.product_id = p.product_id " +
+                "WHERE p.product_name LIKE ?";
         ObservableList<ProductStatistics> productList = FXCollections.observableArrayList();
 
         try (Connection conn = new DBConnection().getConn();
              PreparedStatement ps = conn.prepareStatement(query)) {
-
             ps.setString(1, "%" + keyword + "%");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 productList.add(new ProductStatistics(
-                        rs.getString("code_product"), // Đảm bảo đây là String
+                        rs.getInt("stat_id"),
+                        rs.getDate("report_date").toLocalDate(),
+                        rs.getInt("product_id"),
                         rs.getString("product_name"),
-                        rs.getString("product_detail"),
-                        rs.getString("size"),
-                        rs.getInt("total_stock"),
-                        rs.getInt("quantity_sold"),
-                        rs.getInt("quantity_remaining")
+                        rs.getDouble("price")
                 ));
             }
 
