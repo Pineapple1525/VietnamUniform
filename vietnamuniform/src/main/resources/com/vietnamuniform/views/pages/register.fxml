@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vietnamuniform.controller.RegisterController">
+    <children>
+        <BorderPane prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: #fff;">
+            <left>
+                <Pane prefHeight="696.0" prefWidth="471.0" style="-fx-background-image: url('/com/vietnamuniform/images/aodailogo.png'); -fx-background-size: cover;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="600.0" fitWidth="484.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@../images/aodailogin.png" />
+                     </image>
+                  </ImageView>
+               </children></Pane>
+            </left>
+            <center>
+                <Pane fx:id="centerPane" prefHeight="678.0" prefWidth="483.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <StackPane layoutX="-1.0" prefHeight="728.0" prefWidth="676.0">
+                            <children>
+                                <Pane prefHeight="722.0" prefWidth="668.0">
+                                    <children>
+                                        <TextField fx:id="emailField" layoutX="123.0" layoutY="148.0" prefHeight="45.0" prefWidth="331.0" promptText="emailexemplo@gmail.com" />
+                                        <PasswordField fx:id="passwordField" layoutX="123.0" layoutY="254.0" prefHeight="45.0" prefWidth="331.0" promptText="Enter 4 characters or more" />
+                                        <PasswordField fx:id="reEnterPasswordField" layoutX="123.0" layoutY="354.0" prefHeight="45.0" prefWidth="331.0" promptText="Re-enter password" />
+
+                                        <Button fx:id="signInButton" layoutX="329.0" layoutY="464.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="133.0" style="-fx-background-color: #8B4513;" text="Sign in" textFill="WHITE" />
+                                        <Button fx:id="forgotPasswordButton" layoutX="324.0" layoutY="416.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Forgot password?" />
+                                        <Button fx:id="signUpButton" layoutX="124.0" layoutY="464.0" mnemonicParsing="false" onAction="#handleRegister" prefHeight="44.0" prefWidth="134.0" style="-fx-background-color: #000055; -fx-border-color: transparent;" text="Sign up" textFill="WHITE" />
+
+                                        <Label fx:id="emailLabel" layoutX="124.0" layoutY="104.0" prefHeight="27.0" prefWidth="97.0" text="Email">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="passwordLabel" layoutX="124.0" layoutY="210.0" prefHeight="27.0" prefWidth="97.0" text="Password">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="reEnterPasswordLabel" layoutX="124.0" layoutY="316.0" prefHeight="27.0" prefWidth="184.0" text="Re-enter password">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="titleLabel" layoutX="123.0" layoutY="14.0" prefHeight="35.0" prefWidth="185.0" text="Vietnam uniform">
+                                            <font>
+                                                <Font size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="errorField" alignment="CENTER" layoutX="120.0" layoutY="534.0" prefHeight="41.0" prefWidth="338.0" style="-fx-text-fill: red;" />
+                                    </children>
+                                </Pane>
+                            </children>
+                        </StackPane>
+                    </children>
+                </Pane>
+            </center>
+        </BorderPane>
+    </children>
+</AnchorPane>

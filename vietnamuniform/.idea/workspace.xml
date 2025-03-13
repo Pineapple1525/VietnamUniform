@@ -5,33 +5,81 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ff56135-c69e-44ea-ab8e-6fa89c621ff7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/connection/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/LayoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/StatisticsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/model/EmployeeStatistics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/model/ProductStatistics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/model/RevenueStatistics.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/login.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/images/icons8-details-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/images/icons8-employee-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/images/icons8-exit-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/employees.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/statistics .fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/styles/product.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/connection/DBConnection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/CustomerController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/DBConnection.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/EmployeeController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/ExitController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/LayoutController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/LoginController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/OderController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/OderDetailsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/Product.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/ProductController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/StatisticsController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/aodailogin.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/icons8-category-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/icons8-details-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/icons8-employee-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/icons8-exit-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/icons8-payment-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/icons8-product-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/icons8-purchase-order-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/icons8-report-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/icons8-shopping-bag-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/icons8-user-60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/images/z6343478924285_f68ce1ce61c95fe215311d2464aab2f7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/pages/exit.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/pages/statistics .fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/styles/main.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/styles/product.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/connection/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/connection/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/ExitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/ExitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/LayoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/LayoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/customer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/customer.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/employees.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/employees.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/exit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/exit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/product.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/product.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/statistics .fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/statistics.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/connection/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/connection/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/CustomerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/EmployeeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/EmployeeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/ExitController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/ExitController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/LayoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/LayoutController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/ProductController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/StatisticsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/controller/StatisticsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/pages/exit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/pages/exit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/styles/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vietnamuniform/views/styles/product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/CategoriesController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/LayOutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/LayOutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/RegisterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vietnamuniform/controller/ExitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/payments.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/vietnamuniform/views/pages/payments.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/images/icons8-invoice-60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/customer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/customer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/oder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/oder.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/oders-details.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/oders-details.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/payments.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/payments.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/product.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/product.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/reports.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/pages/exit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/vietnamuniform/views/styles/main.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,21 +122,25 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;pineapple&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ADMIN/Documents/Zalo Received Files/VietnamUniform/VietnamUniform&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Merging Nguyên",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/vidu_project/ancientCostume",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "configurable.group.tools"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Project2\vietnamuniform\src\main\resources\com\vietnamuniform\views\images" />

@@ -2,6 +2,7 @@ module com.vietnamuniform {
     requires javafx.controls;
     requires javafx.fxml;
 
+    requires jbcrypt;
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
