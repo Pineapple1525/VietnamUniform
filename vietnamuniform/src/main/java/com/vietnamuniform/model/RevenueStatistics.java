@@ -1,24 +1,84 @@
 package com.vietnamuniform.model;
 
-import java.time.LocalDate;
-public class RevenueStatistics {
-    private LocalDate reportDate;
-    private int orderId;
-    private int employeeId;
-    private String employeeName;
-    private double totalAmount;
+import java.util.Date;
 
-    public RevenueStatistics(LocalDate reportDate, int orderId, int employeeId, String employeeName, double totalAmount) {
+public class RevenueStatistics {
+    private int id;
+    private Date reportDate;
+    private int totalProductsSold;
+    private double totalRevenue;
+    private String employeeCode;
+    private String employeeName;
+
+    // Constructor
+    public RevenueStatistics(int id, Date reportDate, int totalProductsSold, double totalRevenue,
+                             String employeeCode, String employeeName) {
+        this.id = id;
         this.reportDate = reportDate;
-        this.orderId = orderId;
-        this.employeeId = employeeId;
+        this.totalProductsSold = totalProductsSold;
+        this.totalRevenue = totalRevenue;
+        this.employeeCode = employeeCode;
         this.employeeName = employeeName;
-        this.totalAmount = totalAmount;
     }
 
-    public LocalDate getReportDate() { return reportDate; }
-    public int getOrderId() { return orderId; }
-    public int getEmployeeId() { return employeeId; }
-    public String getEmployeeName() { return employeeName; }
-    public double getTotalAmount() { return totalAmount; }
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getReportDate() {
+        return reportDate;
+    }
+
+    public void setReportDate(Date reportDate) {
+        this.reportDate = reportDate;
+    }
+
+    public int getTotalProductsSold() {
+        return totalProductsSold;
+    }
+
+    public void setTotalProductsSold(int totalProductsSold) {
+        this.totalProductsSold = totalProductsSold;
+    }
+
+    public double getTotalRevenue() {
+        return totalRevenue;
+    }
+
+    public void setTotalRevenue(double totalRevenue) {
+        this.totalRevenue = totalRevenue;
+    }
+
+    public String getEmployeeCode() {
+        return employeeCode;
+    }
+
+    public void setEmployeeCode(String employeeCode) {
+        this.employeeCode = employeeCode;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    @Override
+    public String toString() {
+        return "RevenueStatistics{" +
+                "id=" + id +
+                ", reportDate=" + reportDate +
+                ", totalProductsSold=" + totalProductsSold +
+                ", totalRevenue=" + totalRevenue +
+                ", employeeCode='" + employeeCode + '\'' +
+                ", employeeName='" + employeeName + '\'' +
+                '}';
+    }
 }
