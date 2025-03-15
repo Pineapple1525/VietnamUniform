@@ -1,59 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="627.0" prefWidth="1038.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: #fff;"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.vietnamuniform.controller.LoginController">
     <children>
-        <BorderPane prefHeight="627.0" prefWidth="1038.0" style="-fx-background-color: #fff;">
+        <BorderPane prefHeight="600.0" prefWidth="1024.0" style="-fx-background-color: #fff;">
+            <!-- Left Panel with Background Image -->
             <left>
-                <Pane prefHeight="678.0" prefWidth="478.0" style="-fx-background-image: url('../../img/aodailogin.jpg'); -fx-background-size: cover;" BorderPane.alignment="CENTER" />
+                <Pane prefHeight="600.0" prefWidth="512.0"
+                      style="-fx-background-image: url('/com/vietnamuniform/views/images/aodailogin.jpg'); -fx-background-size: cover;"
+                      BorderPane.alignment="CENTER" />
             </left>
+            <!-- Center Panel with Login Form -->
             <center>
-                <Pane prefHeight="678.0" prefWidth="483.0" BorderPane.alignment="CENTER">
+                <Pane prefHeight="600.0" prefWidth="512.0" BorderPane.alignment="CENTER">
                     <children>
-                        <StackPane layoutX="-1.0" prefHeight="678.0" prefWidth="562.0">
+                        <VBox alignment="CENTER" layoutX="50.0" layoutY="50.0"
+                              prefHeight="500.0" prefWidth="412.0" spacing="20.0">
                             <children>
-                                <Pane prefHeight="200.0" prefWidth="200.0">
+                                <!-- Title -->
+                                <Label text="Vietnam Uniform">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                                <!-- Username Field -->
+                                <Label text="Username">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="usernameField" prefHeight="45.0" prefWidth="331.0"
+                                           promptText="Enter your username" />
+                                <!-- Password Field -->
+                                <Label text="Password">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                                <PasswordField fx:id="passwordField" prefHeight="45.0" prefWidth="331.0"
+                                               promptText="Enter 4 characters or more" />
+                                <!-- Buttons -->
+                                <HBox alignment="CENTER" spacing="20.0">
                                     <children>
-                                        <TextField layoutX="123.0" layoutY="200.0" prefHeight="50.0" prefWidth="330.0" promptText="emailexemplo@gmail.com" />
-                                        <TextField layoutX="123.0" layoutY="299.0" prefHeight="50.0" prefWidth="330.0" promptText="Enter 8 characters or more" />
-                                        <Button layoutX="296.0" layoutY="419.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="159.0" style="-fx-background-color: #892971;" text="Sign in" textFill="WHITE" />
-                                        <Label layoutX="121.0" layoutY="164.0" prefHeight="27.0" prefWidth="45.0" text="Email">
-                                            <font>
-                                                <Font size="18.0" />
-                                            </font>
-                                        </Label>
-                                        <Label layoutX="123.0" layoutY="265.0" text="Label">
-                                            <font>
-                                                <Font size="18.0" />
-                                            </font>
-                                        </Label>
-                                        <Button layoutX="315.0" layoutY="358.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Forgot password?" />
-                                        <Button layoutX="123.0" layoutY="419.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="165.0" style="-fx-background-color: #000055; -fx-border-color: transparent;" text="Sign up" textFill="WHITE" />
-                                        <Label layoutX="121.0" layoutY="92.0" prefHeight="35.0" prefWidth="129.0" text="GET Started">
-                                            <font>
-                                                <Font size="24.0" />
-                                            </font>
-                                        </Label>
-                                        <ImageView fitHeight="97.0" fitWidth="98.0" layoutX="465.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@../images/logoaodai.jpg" />
-                                            </image>
-                                        </ImageView>
+                                        <Button fx:id="loginButton" mnemonicParsing="false"
+                                                onAction="#handleLogin" prefHeight="44.0" prefWidth="133.0"
+                                                style="-fx-background-color: #8B4513;"
+                                                text="Sign in" textFill="WHITE" />
                                     </children>
-                                </Pane>
+                                </HBox>
+                                <!-- Forgot Password Link -->
+                                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="144.0"
+                                        style="-fx-background-color: transparent; -fx-border-color: transparent;"
+                                        text="Forgot password?" />
+                                <!-- Error Message -->
+                                <Label fx:id="ErrorField" alignment="CENTER" prefHeight="41.0" prefWidth="331.0"
+                                       textFill="RED">
+                                    <font>
+                                        <Font size="14.0" />
+                                    </font>
+                                </Label>
                             </children>
-                        </StackPane>
-                    </children></Pane>
+                        </VBox>
+                    </children>
+                </Pane>
             </center>
         </BorderPane>
     </children>

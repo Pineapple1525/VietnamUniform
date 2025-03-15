@@ -22,12 +22,12 @@
                 <!-- Các trường nhập liệu -->
                 <TextField fx:id="txtCodeEmployee" layoutX="50" layoutY="70" prefWidth="225" promptText="Mã nhân viên" />
                 <TextField fx:id="txtFullname" layoutX="300" layoutY="70" prefWidth="225" promptText="Họ và tên" />
-                <ComboBox fx:id="cmbGender" layoutX="550" layoutY="70" prefWidth="225">
+                <ComboBox fx:id="cmbGender" layoutX="550" layoutY="70" prefWidth="225" promptText="Giới tính">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Men" />
-                            <String fx:value="Women" />
-                            <String fx:value="Other" />
+                            <String fx:value="Nam" />
+                            <String fx:value="Nữ" />
+                            <String fx:value="Khác" />
                         </FXCollections>
                     </items>
                 </ComboBox>
@@ -36,12 +36,12 @@
                 <TextField fx:id="txtPhone" layoutX="300" layoutY="120" prefWidth="225" promptText="Số điện thoại" />
                 <TextField fx:id="txtUsername" layoutX="550" layoutY="120" prefWidth="225" promptText="Tên đăng nhập" />
                 <PasswordField fx:id="txtPassword" layoutX="800" layoutY="120" prefWidth="225" promptText="Mật khẩu" />
-                <ComboBox fx:id="cmbRole"  layoutX="50" layoutY="170" prefWidth="225">
+                <ComboBox fx:id="cmbRole" layoutX="50" layoutY="170" prefWidth="225" promptText="Chức vụ">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Boss" />
-                            <String fx:value="Manager" />
-                            <String fx:value="Employee" />
+                            <String fx:value="Chủ" />
+                            <String fx:value="Quản lý" />
+                            <String fx:value="Nhân viên" /> <!-- Removed trailing space -->
                         </FXCollections>
                     </items>
                 </ComboBox>
@@ -69,7 +69,6 @@
                         <TableColumn fx:id="colUsername" prefWidth="130.666" text="Tên đăng nhập" />
                         <TableColumn fx:id="colPassword" prefWidth="130.666" text="Mật khẩu" />
                         <TableColumn fx:id="colRole" prefWidth="93.333" text="Chức vụ" />
-<!--                        <TableColumn fx:id="colAction" prefWidth="177.999" text="Hành động" />-->
                     </columns>
                 </TableView>
 

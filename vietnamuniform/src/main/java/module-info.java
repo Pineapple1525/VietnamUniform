@@ -12,6 +12,7 @@ module com.vietnamuniform {
     opens com.vietnamuniform.controller to javafx.fxml;
 
     opens com.vietnamuniform.model to javafx.base;
+
 }
 
 

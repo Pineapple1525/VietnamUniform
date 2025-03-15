@@ -3,12 +3,10 @@ package com.vietnamuniform.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
-import java.net.URL;
 
 public class LayoutController {
 
@@ -29,7 +27,6 @@ public class LayoutController {
     }
 
 
-
     @FXML
     public void loadProducts() {
         loadView("/com/vietnamuniform/views/pages/product.fxml");
@@ -42,7 +39,7 @@ public class LayoutController {
 
     @FXML
     public void loadOder() {
-        loadView("/com/vietnamuniform/views/pages/oder.fxml");
+        loadView("/com/vietnamuniform/views/pages/order.fxml");
     }
 
     @FXML
@@ -62,4 +59,9 @@ public class LayoutController {
     public void loadCustomers() {
         loadView("/com/vietnamuniform/views/pages/customer.fxml");
     }
+
+    public void userBtn(ActionEvent actionEvent) {
+    }
+
+
 }

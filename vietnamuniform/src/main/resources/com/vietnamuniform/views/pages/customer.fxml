@@ -35,12 +35,12 @@
                 <TextField fx:id="txtAddress" layoutX="550" layoutY="60" prefWidth="225" promptText="Địa chỉ" />
 
                 <!-- ComboBox Giới tính -->
-                <ComboBox fx:id="cmbGender" layoutX="800" layoutY="60" prefWidth="225">
+                <ComboBox fx:id="cmbGender" layoutX="800" layoutY="60" prefWidth="225" promptText="Giới tính">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Nam" />
-                            <String fx:value="Nữ" />
-                            <String fx:value="Khác" />
+                            <String fx:value="Men" />
+                            <String fx:value="Women" />
+                            <String fx:value="Oth" />
                         </FXCollections>
                     </items>
                 </ComboBox>
@@ -49,7 +49,7 @@
                 <TextField fx:id="txtPhone" layoutX="50" layoutY="100" prefWidth="225" promptText="Số điện thoại" />
 
                 <!-- ComboBox Loại khách hàng -->
-                <ComboBox fx:id="cmbCustomerType" layoutX="300" layoutY="100" prefWidth="225">
+                <ComboBox fx:id="cmbCustomerType" layoutX="300" layoutY="100" prefWidth="225" promptText="Loại khách hàng" >
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Sinh viên" />
