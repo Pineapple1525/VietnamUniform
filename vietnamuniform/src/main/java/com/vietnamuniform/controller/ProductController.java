@@ -1,7 +1,9 @@
 package com.vietnamuniform.controller;
 
 import com.vietnamuniform.model.Product;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -9,6 +11,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.layout.HBox;
 import com.vietnamuniform.connection.DBConnection;
+import javafx.scene.Scene;
+import javafx.scene.Parent;
+import javafx.scene.layout.StackPane;
+
+import java.io.File;
+import java.nio.file.*;
 
 import java.sql.*;
 
@@ -16,11 +24,13 @@ public class ProductController {
     @FXML private TableView<Product> productTable;
     @FXML private TableColumn<Product, ImageView> colImage;
     @FXML private TableColumn<Product, Integer> colId, colQuantity;
-    @FXML private TableColumn<Product, String> colName, colCategory, colDescription, colManufactureDate;
+    @FXML private TableColumn<Product, String> colCodeProduct, colName, colCategory, colDescription, colManufactureDate;
     @FXML private TableColumn<Product, Double> colImportPrice, colSalePrice;
     @FXML private TableColumn<Product, Void> colAction;
+    @FXML
+    private ScrollPane mainPane;
 
-    @FXML private TextField txtName, txtCategory, txtDescription, txtImportPrice, txtSalePrice, txtQuantity, txtManufactureDate, txtImageUrl;
+    @FXML private TextField txtCodeProduct, txtName, txtCategory, txtDescription, txtImportPrice, txtSalePrice, txtQuantity, txtManufactureDate, txtImageUrl;
     @FXML private Button btnAdd, btnUpdate, btnDelete;
     private boolean isEditing = false;
     private Product selectedProduct;
@@ -29,7 +39,8 @@ public class ProductController {
     @FXML
     public void initialize() {
         colImage.setCellValueFactory(new PropertyValueFactory<>("image"));
-        colId.setCellValueFactory(new PropertyValueFactory<>("productId"));
+
+        colCodeProduct.setCellValueFactory(new PropertyValueFactory<>("codeProduct"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
         colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -45,9 +56,11 @@ public class ProductController {
 
         addActionButton();
         loadProductsFromDatabase();
+        watchCSS("src/main/resources/com/vietnamuniform/views/styles/product.css");
     }
 
     private void clearFields() {
+        txtCodeProduct.clear();
         txtName.clear();
         txtCategory.clear();
         txtDescription.clear();
@@ -57,7 +70,6 @@ public class ProductController {
         txtManufactureDate.clear();
         txtImageUrl.clear();
     }
-
     private void loadProductsFromDatabase() {
         productList.clear();
         String query = "SELECT * FROM Products";
@@ -68,6 +80,7 @@ public class ProductController {
             while (rs.next()) {
                 Product product = new Product(
                         rs.getInt("product_id"),
+                        rs.getString("code_product"),
                         rs.getString("name"),
                         rs.getString("category"),
                         rs.getString("description"),
@@ -87,31 +100,40 @@ public class ProductController {
 
     @FXML
     private void addProduct() {
-        if (txtName.getText().isEmpty() || txtImportPrice.getText().isEmpty() || txtSalePrice.getText().isEmpty() || txtQuantity.getText().isEmpty()) {
+        if (txtCodeProduct.getText().isEmpty() || txtName.getText().isEmpty() || txtImportPrice.getText().isEmpty() || txtSalePrice.getText().isEmpty() || txtQuantity.getText().isEmpty()) {
             System.out.println("⚠️ Vui lòng nhập đầy đủ thông tin sản phẩm!");
             return;
         }
 
-        String query = "INSERT INTO Products (name, category, description, import_price, sale_price, quantity, manufacture_date, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO Products (code_product, name, category, description, import_price, sale_price, quantity, manufacture_date, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         try (Connection conn = new DBConnection().getConn();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
-            pstmt.setString(1, txtName.getText());
-            pstmt.setString(2, txtCategory.getText());
-            pstmt.setString(3, txtDescription.getText());
-            pstmt.setDouble(4, Double.parseDouble(txtImportPrice.getText()));
-            pstmt.setDouble(5, Double.parseDouble(txtSalePrice.getText()));
-            pstmt.setInt(6, Integer.parseInt(txtQuantity.getText()));
-            pstmt.setString(7, txtManufactureDate.getText());
-            pstmt.setString(8, txtImageUrl.getText());
+            pstmt.setString(1, txtCodeProduct.getText());
+            pstmt.setString(2, txtName.getText());
+            pstmt.setString(3, txtCategory.getText());
+            pstmt.setString(4, txtDescription.getText());
+            pstmt.setDouble(5, Double.parseDouble(txtImportPrice.getText()));
+            pstmt.setDouble(6, Double.parseDouble(txtSalePrice.getText()));
+            pstmt.setInt(7, Integer.parseInt(txtQuantity.getText()));
+            pstmt.setString(8, txtManufactureDate.getText());
+            pstmt.setString(9, txtImageUrl.getText());
 
             pstmt.executeUpdate();
+            System.out.println("✅ Sản phẩm đã được thêm thành công!");
             clearFields();
             loadProductsFromDatabase();
+
         } catch (SQLException e) {
-            e.printStackTrace();
+            if (e.getSQLState().equals("23000")) {
+                System.out.println("⚠️ Sản phẩm đã tồn tại! Vui lòng cập nhật thay vì thêm mới.");
+            } else {
+                e.printStackTrace();
+            }
         }
     }
+
     @FXML
     private void updateProduct() {
         if (selectedProduct == null) return;
@@ -163,11 +185,19 @@ public class ProductController {
         colAction.setCellFactory(param -> new TableCell<>() {
             private final Button deleteButton = new Button("Delete");
             private final Button editButton = new Button("Edit");
+            private final HBox hbox = new HBox(10, editButton, deleteButton);
+            private final StackPane stackPane = new StackPane(hbox);
 
             {
+                hbox.setAlignment(Pos.CENTER);
+                stackPane.setAlignment(Pos.CENTER);
+
+                deleteButton.getStyleClass().add("delete-button");
+                editButton.getStyleClass().add("edit-button");
+
                 deleteButton.setOnAction(e -> deleteProduct(getTableView().getItems().get(getIndex())));
                 editButton.setOnAction(e -> {
-                    Product selectedProduct = getTableView().getItems().get(getIndex());
+                    selectedProduct = getTableView().getItems().get(getIndex());
                     if (selectedProduct != null) {
                         txtName.setText(selectedProduct.getName());
                         txtCategory.setText(selectedProduct.getCategory());
@@ -184,7 +214,41 @@ public class ProductController {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                setGraphic(empty ? null : new HBox(5, editButton, deleteButton));
+                setGraphic(empty ? null : stackPane);
+            }
+        });
+    }
+    private void watchCSS(String cssFilePath) {
+        Thread thread = new Thread(() -> {
+            try {
+                Path path = Paths.get(cssFilePath).toAbsolutePath().getParent();
+                WatchService watchService = FileSystems.getDefault().newWatchService();
+                path.register(watchService, StandardWatchEventKinds.ENTRY_MODIFY);
+
+                while (true) {
+                    WatchKey key = watchService.take();
+                    for (WatchEvent<?> event : key.pollEvents()) {
+                        if (event.context().toString().equals(new File(cssFilePath).getName())) {
+                            reloadCSS();
+                        }
+                    }
+                    key.reset();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        thread.setDaemon(true);
+        thread.start();
+    }
+
+    private void reloadCSS() {
+        Platform.runLater(() -> {
+            Scene scene = mainPane.getScene();
+            if (scene != null) {
+                scene.getStylesheets().clear();
+                scene.getStylesheets().add(new File("src/main/resources/com/vietnamuniform/views/styles/product.css").toURI().toString());
+                System.out.println("CSS Reloaded!");
             }
         });
     }
