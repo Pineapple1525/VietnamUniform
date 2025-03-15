@@ -28,7 +28,7 @@ public class EmployeeController {
     private ObservableList<Employee> employeeList = FXCollections.observableArrayList();
 
     public void initialize() {
-        conn = new DBConnection().getConn();
+        Connection conn = DBConnection.getConn();
         loadData();
 
         // Set up ComboBox data

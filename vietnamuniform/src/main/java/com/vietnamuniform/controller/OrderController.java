@@ -33,7 +33,7 @@ public class OrderController {
 
     @FXML
     public void initialize() {
-        conn = new DBConnection().getConn();
+        Connection conn = DBConnection.getConn();
         setupTableColumns();
         loadOrders();
         loadEmployeeIds();

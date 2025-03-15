@@ -23,7 +23,7 @@
                         <Font size="15.0" />
                     </font>
                 </TextField>
-                <Button fx:id="searchButton" layoutX="370" layoutY="20" style="-fx-font-size: 20px;" text="🔍"/>
+                <Button fx:id="btnSearch" layoutX="370" layoutY="20" style="-fx-font-size: 20px;" text="🔍"/>
 
                 <!-- Các trường nhập liệu, cách thanh tìm kiếm 20px, cách nhau 10px -->
                 <TextField fx:id="txtCodeProduct" layoutX="50" layoutY="80" prefWidth="225" promptText="Mã sản phẩm"/>

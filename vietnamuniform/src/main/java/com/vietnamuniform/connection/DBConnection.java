@@ -7,39 +7,30 @@ import java.sql.SQLException;
 public class DBConnection {
     private static Connection conn;
 
-    public DBConnection() {
-
-        // kiem tra xem da co driver hay chua
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Không tìm thấy driver MySQL", e);
-        }
-
-        try {
-            this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/storemanagement", "root", "");
-            System.out.println("Kết nối thành công!");
-        } catch (SQLException e) {
-            throw new RuntimeException("Lỗi kết nối đến MySQL", e);
-        }
-
-    }
+    private DBConnection() { } // Ngăn chặn khởi tạo đối tượng
 
     public static Connection getConn() {
+        try {
+            if (conn == null || conn.isClosed()) {  // Kiểm tra kết nối trước khi sử dụng
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/storemanagement", "root", "duy2692005");
+                System.out.println("✅ Kết nối thành công!");
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException("❌ Lỗi kết nối đến MySQL", e);
+        }
         return conn;
     }
 
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
 
-    public void close(){
-        if (this.conn != null){
+    public static void close() {
+        if (conn != null) {
             try {
-                this.conn.close();
+                conn.close();
+                conn = null; // Đặt lại null để có thể mở lại sau này
+                System.out.println("🔌 Kết nối đã đóng!");
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
             }
         }
     }

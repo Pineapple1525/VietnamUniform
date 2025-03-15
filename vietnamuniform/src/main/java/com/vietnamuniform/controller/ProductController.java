@@ -30,8 +30,8 @@ public class ProductController {
     @FXML
     private ScrollPane mainPane;
 
-    @FXML private TextField txtCodeProduct, txtName, txtCategory, txtDescription, txtImportPrice, txtSalePrice, txtQuantity, txtManufactureDate, txtImageUrl;
-    @FXML private Button btnAdd, btnUpdate, btnDelete;
+    @FXML private TextField  txtCodeProduct, txtName, txtCategory, txtDescription, txtImportPrice, txtSalePrice, txtQuantity, txtManufactureDate, txtImageUrl,searchField;
+    @FXML private Button btnAdd, btnUpdate, btnDelete,btnSearch;
     private boolean isEditing = false;
     private Product selectedProduct;
     private ObservableList<Product> productList = FXCollections.observableArrayList();
@@ -53,6 +53,8 @@ public class ProductController {
         btnUpdate.setOnAction(e -> updateProduct());
         btnDelete.setOnAction(e -> clearFields());
         btnAdd.setOnAction(e -> addProduct());
+        btnSearch.setOnAction(e -> searchProduct());
+
 
         addActionButton();
         loadProductsFromDatabase();
@@ -73,7 +75,7 @@ public class ProductController {
     private void loadProductsFromDatabase() {
         productList.clear();
         String query = "SELECT * FROM Products";
-        try (Connection conn = new DBConnection().getConn();
+        try (Connection conn = DBConnection.getConn();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
@@ -107,7 +109,7 @@ public class ProductController {
 
         String query = "INSERT INTO Products (code_product, name, category, description, import_price, sale_price, quantity, manufacture_date, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = new DBConnection().getConn();
+        try (Connection conn = DBConnection.getConn();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
 
             pstmt.setString(1, txtCodeProduct.getText());
@@ -138,9 +140,10 @@ public class ProductController {
     private void updateProduct() {
         if (selectedProduct == null) return;
 
-        String query = "UPDATE Products SET name=?, category=?, description=?, import_price=?, sale_price=?, quantity=?, manufacture_date=?, image_url=? WHERE product_id=?";
-        try (Connection conn = new DBConnection().getConn();
+        String query = "UPDATE Products SET  name=?, category=?, description=?, import_price=?, sale_price=?, quantity=?, manufacture_date=?, image_url=? ,code_product=? WHERE product_id=?";
+        try (Connection conn = DBConnection.getConn();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
+
             pstmt.setString(1, txtName.getText());
             pstmt.setString(2, txtCategory.getText());
             pstmt.setString(3, txtDescription.getText());
@@ -149,7 +152,9 @@ public class ProductController {
             pstmt.setInt(6, Integer.parseInt(txtQuantity.getText()));
             pstmt.setString(7, txtManufactureDate.getText());
             pstmt.setString(8, txtImageUrl.getText());
-            pstmt.setInt(9, selectedProduct.getProductId());
+            pstmt.setString(9, txtCodeProduct.getText());
+            pstmt.setInt(10, selectedProduct.getProductId());
+
 
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows > 0) {
@@ -171,15 +176,21 @@ public class ProductController {
         if (product == null) return;
 
         String query = "DELETE FROM Products WHERE product_id=?";
-        try (Connection conn = new DBConnection().getConn();
+        try (Connection conn = DBConnection.getConn();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
             pstmt.setInt(1, product.getProductId());
-            pstmt.executeUpdate();
-            productList.remove(product);
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows > 0) {
+                System.out.println("✅ Xóa sản phẩm thành công!");
+                productList.removeIf(p -> p.getProductId() == product.getProductId()); // Xóa đúng sản phẩm
+            } else {
+                System.out.println("❌ Không thể xóa sản phẩm!");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
     private void addActionButton() {
         colAction.setCellFactory(param -> new TableCell<>() {
@@ -199,6 +210,7 @@ public class ProductController {
                 editButton.setOnAction(e -> {
                     selectedProduct = getTableView().getItems().get(getIndex());
                     if (selectedProduct != null) {
+                        txtCodeProduct.setText(selectedProduct.getCodeProduct());
                         txtName.setText(selectedProduct.getName());
                         txtCategory.setText(selectedProduct.getCategory());
                         txtDescription.setText(selectedProduct.getDescription());
@@ -218,6 +230,57 @@ public class ProductController {
             }
         });
     }
+
+    @FXML
+    private void searchProduct() {
+        String code = searchField.getText().trim();
+        if (code.isEmpty()) {
+            System.out.println("⚠️ Vui lòng nhập mã sản phẩm!");
+            return;
+        }
+
+        String query = "SELECT * FROM products WHERE code_product = ?";
+
+        try (Connection conn = DBConnection.getConn();
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            if (conn == null || conn.isClosed()) {
+                System.out.println("⚠️ Kết nối đến database bị đóng! Thử kết nối lại...");
+                return;
+            }
+
+            pstmt.setString(1, code);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                productList.clear();
+
+                if (rs.next()) {
+                    Product product = new Product(
+                            rs.getInt("product_id"),
+                            rs.getString("code_product"),
+                            rs.getString("name"),
+                            rs.getString("category"),
+                            rs.getString("description"),
+                            rs.getDouble("import_price"),
+                            rs.getDouble("sale_price"),
+                            rs.getInt("quantity"),
+                            rs.getString("manufacture_date"),
+                            rs.getString("image_url")
+                    );
+                    productList.add(product);
+                    System.out.println("✅ Tìm thấy sản phẩm!");
+                } else {
+                    System.out.println("❌ Không tìm thấy sản phẩm!");
+                }
+                productTable.setItems(productList);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     private void watchCSS(String cssFilePath) {
         Thread thread = new Thread(() -> {
             try {
