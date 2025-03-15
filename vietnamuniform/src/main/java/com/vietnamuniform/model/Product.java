@@ -7,12 +7,13 @@ import java.io.InputStream;
 
 public class Product {
     private int product_id, quantity;
-    private String name, category, description, manufacture_date, image_url;
+    private String code_product, name, category, description, manufacture_date, image_url;
     private double import_price, sale_price;
     private ImageView image;
 
-    public Product(int product_id, String name, String category, String description, double import_price, double sale_price, int quantity, String manufacture_date, String image_url) {
+    public Product(int product_id, String code_product, String name, String category, String description, double import_price, double sale_price, int quantity, String manufacture_date, String image_url) {
         this.product_id = product_id;
+        this.code_product = code_product;
         this.name = name;
         this.category = category;
         this.description = description;
@@ -41,6 +42,7 @@ public class Product {
 
     // Getters
     public int getProductId() { return product_id; }
+    public String getCodeProduct() { return code_product; }
     public String getName() { return name; }
     public String getCategory() { return category; }
     public String getDescription() { return description; }

@@ -1,53 +1,140 @@
 package com.vietnamuniform.model;
+import java.time.LocalDate;
 
 public class EmployeeStatistics {
-    private int statId;
+    private int id;
+    private LocalDate reportDate;
     private int employeeId;
     private String employeeName;
-    private int orderCount;
-    private double totalAmount;
+    private int totalOrders;
+    private double totalRevenue;
     private int productId;
     private String productName;
     private double importPrice;
     private double salePrice;
-    private int quantitySold;
+    private int totalProductsSold;
 
-    // Constructor
-    public EmployeeStatistics(int statId, int employeeId, String employeeName, int orderCount, double totalAmount,
-                              int productId, String productName, double importPrice, double salePrice, int quantitySold) {
-        this.statId = statId;
+    // Constructor đầy đủ
+    public EmployeeStatistics(int id, LocalDate reportDate, int employeeId, String employeeName,
+                              int totalOrders, double totalRevenue, int productId, String productName,
+                              double importPrice, double salePrice, int totalProductsSold) {
+        this.id = id;
+        this.reportDate = reportDate;
         this.employeeId = employeeId;
         this.employeeName = employeeName;
-        this.orderCount = orderCount;
-        this.totalAmount = totalAmount;
+        this.totalOrders = totalOrders;
+        this.totalRevenue = totalRevenue;
         this.productId = productId;
         this.productName = productName;
         this.importPrice = importPrice;
         this.salePrice = salePrice;
-        this.quantitySold = quantitySold;
+        this.totalProductsSold = totalProductsSold;
     }
 
     // Getters
-    public int getStatId() { return statId; }
-    public int getEmployeeId() { return employeeId; }
-    public String getEmployeeName() { return employeeName; }
-    public int getOrderCount() { return orderCount; }
-    public double getTotalAmount() { return totalAmount; }
-    public int getProductId() { return productId; }
-    public String getProductName() { return productName; }
-    public double getImportPrice() { return importPrice; }
-    public double getSalePrice() { return salePrice; }
-    public int getQuantitySold() { return quantitySold; }
+    public int getId() {
+        return id;
+    }
+
+    public LocalDate getReportDate() {
+        return reportDate;
+    }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+
+    public String getEmployeeName() {
+        return employeeName;
+    }
+
+    public int getTotalOrders() {
+        return totalOrders;
+    }
+
+    public double getTotalRevenue() {
+        return totalRevenue;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public double getImportPrice() {
+        return importPrice;
+    }
+
+    public double getSalePrice() {
+        return salePrice;
+    }
+
+    public int getTotalProductsSold() {
+        return totalProductsSold;
+    }
 
     // Setters
-    public void setStatId(int statId) { this.statId = statId; }
-    public void setEmployeeId(int employeeId) { this.employeeId = employeeId; }
-    public void setEmployeeName(String employeeName) { this.employeeName = employeeName; }
-    public void setOrderCount(int orderCount) { this.orderCount = orderCount; }
-    public void setTotalAmount(double totalAmount) { this.totalAmount = totalAmount; }
-    public void setProductId(int productId) { this.productId = productId; }
-    public void setProductName(String productName) { this.productName = productName; }
-    public void setImportPrice(double importPrice) { this.importPrice = importPrice; }
-    public void setSalePrice(double salePrice) { this.salePrice = salePrice; }
-    public void setQuantitySold(int quantitySold) { this.quantitySold = quantitySold; }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setReportDate(LocalDate reportDate) {
+        this.reportDate = reportDate;
+    }
+
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public void setTotalOrders(int totalOrders) {
+        this.totalOrders = totalOrders;
+    }
+
+    public void setTotalRevenue(double totalRevenue) {
+        this.totalRevenue = totalRevenue;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public void setImportPrice(double importPrice) {
+        this.importPrice = importPrice;
+    }
+
+    public void setSalePrice(double salePrice) {
+        this.salePrice = salePrice;
+    }
+
+    public void setTotalProductsSold(int totalProductsSold) {
+        this.totalProductsSold = totalProductsSold;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeStatistics{" +
+                "id=" + id +
+                ", reportDate=" + reportDate +
+                ", employeeId=" + employeeId +
+                ", employeeName='" + employeeName + '\'' +
+                ", totalOrders=" + totalOrders +
+                ", totalRevenue=" + totalRevenue +
+                ", productId=" + productId +
+                ", productName='" + productName + '\'' +
+                ", importPrice=" + importPrice +
+                ", salePrice=" + salePrice +
+                ", totalProductsSold=" + totalProductsSold +
+                '}';
+    }
 }

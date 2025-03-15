@@ -7,39 +7,33 @@ import java.sql.SQLException;
 public class DBConnection {
     private static Connection conn;
 
-    public DBConnection() {
+    
 
-        // kiem tra xem da co driver hay chua
-
+        // kiem tra xem da co driver hay chuaa
+    public static Connection getConn() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            if (conn == null || conn.isClosed()) {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/storemanagement", "root", "duy2692005");
+                System.out.println("Kết nối MySQL thành công!");
+            }
         } catch (ClassNotFoundException e) {
             throw new RuntimeException("Không tìm thấy driver MySQL", e);
-        }
-
-        try {
-            this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/storemanagement", "root", "");
-            System.out.println("Kết nối thành công!");
         } catch (SQLException e) {
             throw new RuntimeException("Lỗi kết nối đến MySQL", e);
         }
-
-    }
-
-    public static Connection getConn() {
         return conn;
     }
 
-    public void setConn(Connection conn) {
-        this.conn = conn;
-    }
-
-    public void close(){
-        if (this.conn != null){
+    public static void closeConnection() {
+        if (conn != null) {
             try {
-                this.conn.close();
+                conn.close();
+                conn = null;
+                System.out.println("Đã đóng kết nối MySQL.");
             } catch (SQLException e) {
-                throw new RuntimeException(e);
+                throw new RuntimeException("Lỗi khi đóng kết nối MySQL", e);
             }
         }
     }
