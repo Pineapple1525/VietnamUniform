@@ -1,17 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Label?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.vietnamuniform.controller.OderDetailsController"
-            prefHeight="400.0" prefWidth="600.0">
-    <children>
-        <Label layoutX="185.0" layoutY="71.0" text="this is oder details" />
-    </children>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="com.vietnamuniform.controller.OrderDetailsController" stylesheets="@../styles/product.css">
 
-</AnchorPane>
+    <top>
+        <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: black; -fx-border-width: 1;">
+            <!-- Hàng trên: Chọn đơn hàng + Tìm kiếm -->
+            <HBox spacing="10">
+                <ComboBox fx:id="orderComboBox" promptText="Chọn mã đơn hàng" onAction="#loadOrderDetails"/>
+                <TextField fx:id="searchField" promptText="Tìm kiếm mã đơn hàng" />
+                <Button fx:id="searchOrder" onAction="#searchOrder" text="Tìm" />
+            </HBox>
+
+            <!-- Hàng giữa: Thêm sản phẩm -->
+            <HBox spacing="10">
+                <ComboBox fx:id="productIdField" promptText="Chọn mã sản phẩm" />
+                <TextField fx:id="productNameField" promptText="Tên sản phẩm" />
+                <!-- Changed from ComboBox to TextField for Giá nhập -->
+                <!-- Changed from ComboBox to TextField for Số lượng -->
+                <TextField fx:id="quantityField" promptText="Số lượng" />
+                <ComboBox fx:id="sizeField" promptText="Chọn kích cỡ" />
+            </HBox>
+
+            <!-- Hàng dưới: Chỉnh sửa sản phẩm -->
+            <HBox spacing="10">
+                <Button fx:id="addOrderDetail"  onAction="#addOrderDetail" style="-fx-background-color: green; -fx-text-fill: white;" text="+ Thêm" />
+                <Button fx:id="editOrderDetail" onAction="#editOrderDetail" style="-fx-background-color: blue; -fx-text-fill: white;" text="Sửa" />
+                <Button fx:id="deleteOrderDetail" onAction="#deleteOrderDetail" style="-fx-background-color: red; -fx-text-fill: white;" text="Xóa" />
+            </HBox>
+        </VBox>
+    </top>
+    <!-- Bottom section with employee info, date, and now the TableView -->
+    <bottom>
+        <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: black; -fx-border-width: 1;">
+            <!-- Employee and date information -->
+            <HBox spacing="20">
+                <Label text="Mã nhân viên:" />
+                <TextField fx:id="employeeIdField" promptText="Mã nhân viên" editable="false" prefWidth="100" />
+
+                <Label text="Nhân viên lập HD:" />
+                <TextField fx:id="employeeNameField" promptText="Nhân viên lập HD" editable="false" prefWidth="150" />
+
+                <!-- Changed from TextField to Label for Ngày lập HD -->
+                <Label text="Ngày lập HD:" />
+                <Label fx:id="invoiceDateField" text="Chưa có ngày" prefWidth="120" />
+            </HBox>
+
+            <!-- New HBox for Mã khách hàng and In Hóa Đơn button -->
+            <HBox spacing="20">
+                <Label text="Mã khách hàng:" />
+                <TextField fx:id="customerIdField" promptText="Mã khách hàng" editable="false" prefWidth="100" />
+
+                <Button fx:id="printInvoiceButton" onAction="#printInvoice" style="-fx-background-color: purple; -fx-text-fill: white;" text="🖨️ In Hóa Đơn" />
+            </HBox>
+
+            <!-- TableView -->
+            <Label text="Danh sách các mặt hàng" style="-fx-font-weight: bold;" />
+            <TableView fx:id="orderDetailsTable" prefWidth="958.0">
+                <columns>
+                    <TableColumn fx:id="orderIdColumn" prefWidth="124" text="Mã đơn hàng" />
+                    <TableColumn fx:id="productIdColumn" prefWidth="101" text="Mã sản phẩm" />
+                    <TableColumn fx:id="productNameColumn" prefWidth="128" text="Tên sản phẩm" />
+                    <TableColumn fx:id="salePriceColumn" prefWidth="105" text="Giá bán" />
+                    <TableColumn fx:id="quantityColumn" prefWidth="88" text="Số lượng" />
+                    <TableColumn fx:id="sizeColumn" prefWidth="108" text="Kích cỡ" />
+                    <TableColumn fx:id="totalPriceColumn" prefWidth="184" text="Tổng giá" />
+                </columns>
+            </TableView>
+        </VBox>
+    </bottom>
+</BorderPane>

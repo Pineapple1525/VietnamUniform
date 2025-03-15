@@ -5,11 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private Connection conn;
+    private static Connection conn;
 
     public DBConnection() {
 
-        // kiem tra xem da cos driver hay chua
+        // kiem tra xem da co driver hay chua
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,7 +26,7 @@ public class DBConnection {
 
     }
 
-    public Connection getConn() {
+    public static Connection getConn() {
         return conn;
     }
 

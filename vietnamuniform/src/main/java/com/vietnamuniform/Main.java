@@ -12,12 +12,16 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/vietnamuniform/views/pages/main.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
-        stage.setTitle("Việt phục Việt Nam");
-        stage.setScene(scene);
-        stage.show();
-        // hi
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/vietnamuniform/views/pages/main.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+            stage.setTitle("");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 

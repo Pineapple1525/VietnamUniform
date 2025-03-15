@@ -28,6 +28,9 @@ public class Employee {
         this.role = role;
     }
 
+    public Employee(int employeeId, String codeEmployee, String fullname, String gender, Date birthdate, String address, String phone, String username, String role) {
+    }
+
     // Getters and Setters
     public int getEmployeeId() {
         return employeeId;

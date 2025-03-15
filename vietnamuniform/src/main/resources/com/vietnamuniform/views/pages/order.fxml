@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.vietnamuniform.controller.OrderController" stylesheets="@../styles/product.css">
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="10" style="-fx-padding: 15;">
+
+            <!-- Search and Filter Section -->
+            <VBox spacing="10">
+                <HBox spacing="10">
+                    <TextField fx:id="searchField" promptText="Tìm kiếm mã đơn hàng" />
+                    <Button fx:id="searchButton" text="🔍" onAction="#searchOrder" />
+
+
+                </HBox>
+                <HBox spacing="10">
+                    <TextField fx:id="orderIdField" promptText="Mã đơn hàng" />
+                    <DatePicker fx:id="orderDatePicker" promptText="Ngày lập đơn hàng" />
+                    <ComboBox fx:id="customerIdComboBox" promptText="Mã khách hàng" />
+                </HBox>
+
+                <HBox spacing="10">
+                    <ComboBox  fx:id="employeeIdComboBox" promptText="Chọn mã nhân viên" />
+                    <TextField fx:id="employeeNameField" promptText="Nhân viên lập đơn hàng" />
+
+                </HBox>
+            </VBox>
+
+
+            <!-- Action Buttons -->
+            <HBox spacing="10">
+                <Button fx:id="addButton" style="-fx-background-color: green; -fx-text-fill: white;" text="+ Thêm" onAction="#addOrder" />
+                <Button fx:id="editButton" style="-fx-background-color: blue; -fx-text-fill: white;" text="✏ Sửa" onAction="#editOrder" />
+                <Button fx:id="deleteButton" style="-fx-background-color: red; -fx-text-fill: white;" text="✖ Xóa" onAction="#deleteOrder" />
+            </HBox>
+
+            <!-- Table Section -->
+            <TableView fx:id="orderTable">
+                <columns>
+                    <TableColumn fx:id="orderIdColumn" prefWidth="110" text="Mã đơn hàng" />
+                    <TableColumn fx:id="employeeCodeColumn" prefWidth="90" text="Mã Nhân Viên" />
+                    <TableColumn fx:id="employeeNameColumn" prefWidth="120" text="Nhân Viên Lập" />
+                    <TableColumn fx:id="orderDateColumn" prefWidth="120" text="Ngày Lập" />
+                    <TableColumn fx:id="customerCodeColumn" prefWidth="110" text="Mã Khách Hàng" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

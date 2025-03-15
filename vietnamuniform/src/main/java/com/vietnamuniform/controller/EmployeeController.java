@@ -20,8 +20,6 @@ public class EmployeeController {
     @FXML
     private TableView<Employee> employeeTable;
     @FXML
-    private TableColumn<Employee, Integer> colId;
-    @FXML
     private TableColumn<Employee, String> colCodeEmployee, colFullname, colGender, colBirthdate, colAddress, colPhone, colUsername, colPassword, colRole;
     @FXML
     private Button btnAdd, btnUpdate, btnDelete, searchButton;
@@ -33,11 +31,11 @@ public class EmployeeController {
         conn = new DBConnection().getConn();
         loadData();
 
-        // Cài đặt dữ liệu cho ComboBox
-        cmbGender.setItems(FXCollections.observableArrayList("Men", "Women", "Other"));
-        cmbRole.setItems(FXCollections.observableArrayList("Boss", "Manager", "Employee"));
+        // Set up ComboBox data
+        cmbGender.setItems(FXCollections.observableArrayList("Nam", "Nữ", "Khác"));
+        cmbRole.setItems(FXCollections.observableArrayList("Chủ", "Quản lý", "Nhân viên"));
 
-        // Thiết lập các cột cho TableView
+        // Set up TableView columns
         setUpTableColumns();
 
         employeeTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
@@ -45,8 +43,6 @@ public class EmployeeController {
                 setEmployeeFields(newSelection);
             }
         });
-
-        searchButton.setOnAction(event -> searchEmployee());
     }
 
     private void setUpTableColumns() {
@@ -79,21 +75,60 @@ public class EmployeeController {
                 rs.getInt("employee_id"),
                 rs.getString("code_employee"),
                 rs.getString("fullname"),
-                convertGenderFromDB(rs.getString("gender")),
+                rs.getString("gender"),
                 rs.getDate("birthdate"),
                 rs.getString("address"),
                 rs.getString("phone"),
                 rs.getString("username"),
                 rs.getString("password"),
-                convertRoleFromDB(rs.getString("role"))
+                convertRoleToDisplay(rs.getString("role"))
         );
     }
 
     @FXML
     private void handleAddAction() {
         if (!validateInput()) return;
-        String sql = "INSERT INTO employees (code_employee, fullname, gender, birthdate, address, phone, username, password, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        executeUpdate(sql, false);
+
+        // Lấy giá trị role từ ComboBox
+        String role = cmbRole.getValue() != null ? convertRole(cmbRole.getValue()) : "Employee";
+
+        try {
+            conn.setAutoCommit(false);
+
+            // Thêm vào bảng users
+            String insertUserSql = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+            try (PreparedStatement userStmt = conn.prepareStatement(insertUserSql)) {
+                userStmt.setString(1, txtUsername.getText());
+                userStmt.setString(2, txtPassword.getText());
+                userStmt.setString(3, role); // Vai trò chính xác
+                userStmt.executeUpdate();
+            }
+
+            // Thêm vào bảng employees
+            String insertEmployeeSql = "INSERT INTO employees (code_employee, fullname, gender, birthdate, address, phone, username, password, role) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            try (PreparedStatement employeeStmt = conn.prepareStatement(insertEmployeeSql)) {
+                setStatementParameters(employeeStmt, false);
+                employeeStmt.executeUpdate();
+            }
+
+            conn.commit(); // Commit cả hai bảng
+            loadData();
+            clearFields();
+            showInfo("Thêm nhân viên thành công!");
+        } catch (SQLException e) {
+            try {
+                conn.rollback(); // Rollback nếu có lỗi
+            } catch (SQLException ex) {
+                showError("Lỗi khi rollback!", ex.getMessage());
+            }
+            showError("Lỗi khi thêm nhân viên!", e.getMessage());
+        } finally {
+            try {
+                conn.setAutoCommit(true); // Khôi phục auto-commit
+            } catch (SQLException e) {
+                showError("Lỗi khi khôi phục auto-commit!", e.getMessage());
+            }
+        }
     }
 
     @FXML
@@ -105,8 +140,21 @@ public class EmployeeController {
         }
         if (!validateInput()) return;
 
+        // Update logic (no need to update users table if username doesn't change)
         String sql = "UPDATE employees SET code_employee=?, fullname=?, gender=?, birthdate=?, address=?, phone=?, username=?, password=?, role=? WHERE employee_id=?";
-        executeUpdate(sql, true, selected.getEmployeeId());
+        try {
+            executeUpdate(sql, true, selected.getEmployeeId());
+            // If username changes, update users table as well (optional)
+            String updateUserSql = "UPDATE users SET password = ? WHERE username = ?";
+            try (PreparedStatement userStmt = conn.prepareStatement(updateUserSql)) {
+                userStmt.setString(1, txtPassword.getText());
+                userStmt.setString(2, selected.getUsername()); // Use old username
+                userStmt.executeUpdate();
+            }
+            showInfo("Cập nhật nhân viên thành công!");
+        } catch (SQLException e) {
+            showError("Lỗi khi cập nhật nhân viên!", e.getMessage());
+        }
     }
 
     @FXML
@@ -117,6 +165,7 @@ public class EmployeeController {
             return;
         }
 
+        // Delete will cascade to users due to ON DELETE CASCADE
         String sql = "DELETE FROM employees WHERE employee_id=?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, selected.getEmployeeId());
@@ -129,33 +178,68 @@ public class EmployeeController {
         }
     }
 
-    private void executeUpdate(String sql, boolean isUpdate, Integer... id) {
+    private void executeUpdate(String sql, boolean isUpdate, Integer... id) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             setStatementParameters(stmt, isUpdate, id);
             stmt.executeUpdate();
-            loadData();
-            clearFields();
-            showInfo(isUpdate ? "Cập nhật nhân viên thành công!" : "Thêm nhân viên thành công!");
-        } catch (SQLException e) {
-            showError(isUpdate ? "Lỗi khi cập nhật nhân viên!" : "Lỗi khi thêm nhân viên!", e.getMessage());
         }
     }
 
     private void setStatementParameters(PreparedStatement stmt, boolean isUpdate, Integer... id) throws SQLException {
         stmt.setString(1, txtCodeEmployee.getText());
         stmt.setString(2, txtFullname.getText());
-        stmt.setString(3, convertGenderToDB(cmbGender.getValue()));
-        stmt.setDate(4, Date.valueOf(txtBirthdate.getValue()));
+        stmt.setString(3, cmbGender.getValue() != null ? convertGender(cmbGender.getValue()) : "OTH");
+        stmt.setDate(4, txtBirthdate.getValue() != null ? Date.valueOf(txtBirthdate.getValue()) : null);
         stmt.setString(5, txtAddress.getText());
         stmt.setString(6, txtPhone.getText());
         stmt.setString(7, txtUsername.getText());
         stmt.setString(8, txtPassword.getText());
-        stmt.setString(9, convertRoleToDB(cmbRole.getValue())); // Thêm dòng này
+        stmt.setString(9, cmbRole.getValue() != null ? convertRole(cmbRole.getValue()) : "Employee");
         if (isUpdate) {
-            stmt.setInt(10, id[0]); // Tham số thứ 10 cho employee_id khi cập nhật
+            stmt.setInt(10, id[0]);
         }
     }
 
+    private String convertGender(String gender) {
+        switch (gender) {
+            case "Nam":
+                return "MEN";
+            case "Nữ":
+                return "WOMEN";
+            case "Khác":
+                return "OTH";
+            default:
+                return "OTH";
+        }
+    }
+
+    private String convertRole(String role) {
+        switch (role) {
+            case "Chủ":
+                return "Boss";
+            case "Quản lý":
+                return "Manager"; // Chuyển thành Manager
+            case "Nhân viên":
+                return "Employee";
+            default:
+                return "Employee"; // Giá trị mặc định
+        }
+    }
+
+    private String convertRoleToDisplay(String dbRole) {
+        switch (dbRole) {
+            case "Boss":
+                return "Chủ";
+            case "Manager":
+                return "Quản lý";
+            case "Employee":
+                return "Nhân viên";
+            default:
+                return "Nhân viên"; // Giá trị mặc định
+        }
+    }
+
+    @FXML
     private void searchEmployee() {
         String keyword = searchField.getText().trim();
         if (keyword.isEmpty()) {
@@ -181,8 +265,22 @@ public class EmployeeController {
     private void setEmployeeFields(Employee employee) {
         txtCodeEmployee.setText(employee.getCodeEmployee());
         txtFullname.setText(employee.getFullname());
-        cmbGender.setValue(employee.getGender());
-        txtBirthdate.setValue(employee.getBirthdate().toLocalDate());
+        String genderDisplay;
+        switch (employee.getGender()) {
+            case "MEN":
+                genderDisplay = "Nam";
+                break;
+            case "WOMEN":
+                genderDisplay = "Nữ";
+                break;
+            case "OTH":
+                genderDisplay = "Khác";
+                break;
+            default:
+                genderDisplay = "Khác";
+        }
+        cmbGender.setValue(genderDisplay);
+        txtBirthdate.setValue(employee.getBirthdate() != null ? employee.getBirthdate().toLocalDate() : null);
         txtAddress.setText(employee.getAddress());
         txtPhone.setText(employee.getPhone());
         txtUsername.setText(employee.getUsername());
@@ -197,6 +295,7 @@ public class EmployeeController {
                 txtUsername.getText().isEmpty() ||
                 txtPassword.getText().isEmpty() ||
                 cmbGender.getValue() == null ||
+                txtBirthdate.getValue() == null ||
                 cmbRole.getValue() == null) {
             showWarning("Vui lòng điền đầy đủ thông tin!");
             return false;
@@ -226,36 +325,5 @@ public class EmployeeController {
 
     private void showInfo(String message) {
         new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK).show();
-    }
-
-    private String convertGenderFromDB(String gender) {
-        return switch (gender) {
-            case "MEN" -> "Men";
-            case "WOMEN" -> "Women";
-            case "OTH" -> "Other";
-            default -> "Không xác định";
-        };
-    }
-
-    private String convertGenderToDB(String gender) {
-        return switch (gender) {
-            case "Men" -> "MEN";
-            case "Women" -> "WOMEN";
-            case "Other" -> "OTH";
-            default -> null;
-        };
-    }
-
-    private String convertRoleFromDB(String role) {
-        return role; // Assuming role is already in the correct format
-    }
-
-    private String convertRoleToDB(String role) {
-        return switch (role) {
-            case "Boss" -> "Boss";
-            case "Manager" -> "Manager";
-            case "Employee" -> "Employee";
-            default -> null; // Trả về null nếu không phải giá trị hợp lệ
-        };
     }
 }
