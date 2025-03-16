@@ -37,7 +37,7 @@ public class OrderDetailsController {
 
     @FXML
     public void initialize() {
-        Connection conn = DBConnection.getConn();
+         this.conn = DBConnection.getConn();
         if (conn == null) {
             showAlert(Alert.AlertType.ERROR, "Lỗi", "Không thể kết nối đến cơ sở dữ liệu!");
             return;

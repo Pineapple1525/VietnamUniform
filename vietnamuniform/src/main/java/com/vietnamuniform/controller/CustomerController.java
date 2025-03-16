@@ -28,7 +28,7 @@ public class CustomerController {
     private ObservableList<Customer> customerList = FXCollections.observableArrayList();
 
     public void initialize() {
-        Connection conn = DBConnection.getConn();
+         this.conn = DBConnection.getConn();
         loadData();
 
         // Cài đặt dữ liệu cho ComboBox

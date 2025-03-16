@@ -28,7 +28,11 @@ public class EmployeeController {
     private ObservableList<Employee> employeeList = FXCollections.observableArrayList();
 
     public void initialize() {
-        Connection conn = DBConnection.getConn();
+        this.conn = DBConnection.getConn();
+        if (conn == null) {
+            showError("Lỗi", "Không thể kết nối đến cơ sở dữ liệu!");
+            return;
+        }
         loadData();
 
         // Set up ComboBox data
