@@ -17,7 +17,7 @@
                         <Font size="15.0" />
                     </font>
                 </TextField>
-                <Button fx:id="searchButton" layoutX="360" layoutY="20" style="-fx-font-size: 18px;" text="🔍" />
+                <Button onAction="#searchEmployee" fx:id="searchButton" layoutX="360" layoutY="20" style="-fx-font-size: 18px;" text="🔍" />
 
                 <!-- Các trường nhập liệu -->
                 <TextField fx:id="txtCodeEmployee" layoutX="50" layoutY="70" prefWidth="225" promptText="Mã nhân viên" />

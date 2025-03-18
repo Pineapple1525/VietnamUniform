@@ -243,24 +243,45 @@ public class EmployeeController {
     private void searchEmployee() {
         String keyword = searchField.getText().trim();
         if (keyword.isEmpty()) {
+            employeeList.clear();
             loadData();
             return;
         }
 
         employeeList.clear();
+
+        // Kiểm tra kết nối CSDL
+        if (conn == null) {
+            showError("Lỗi kết nối!", "Không thể kết nối đến cơ sở dữ liệu.");
+            return;
+        }
+
         String sql = "SELECT * FROM employees WHERE fullname LIKE ? OR phone LIKE ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, "%" + keyword + "%");
             stmt.setString(2, "%" + keyword + "%");
+
             ResultSet rs = stmt.executeQuery();
+            boolean hasData = false; // Kiểm tra có dữ liệu trả về hay không
+
             while (rs.next()) {
                 employeeList.add(createEmployeeFromResultSet(rs));
+                hasData = true;
             }
+
+            if (!hasData) {
+                showError("Thông báo", "Không tìm thấy nhân viên nào!");
+            }
+
             employeeTable.setItems(employeeList);
+            employeeTable.refresh(); // Cập nhật bảng
+
         } catch (SQLException e) {
+            e.printStackTrace();
             showError("Lỗi khi tìm kiếm nhân viên!", e.getMessage());
         }
     }
+
 
     private void setEmployeeFields(Employee employee) {
         txtCodeEmployee.setText(employee.getCodeEmployee());
