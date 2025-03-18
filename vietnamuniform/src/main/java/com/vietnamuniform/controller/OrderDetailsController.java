@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.io.FileNotFoundException;
 import java.sql.*;
 
 public class OrderDetailsController {
@@ -389,7 +390,24 @@ public class OrderDetailsController {
     @FXML
     private void printInvoice() {
         System.out.println("In hóa đơn...");
-        // TODO: Thêm logic in hóa đơn thực tế tại đây
+        // Gather invoice data
+        String orderCode = orderComboBox.getValue();
+        if (orderCode == null) {
+            showAlert(Alert.AlertType.WARNING, "Cảnh báo", "Vui lòng chọn đơn hàng để in hóa đơn!");
+            return;
+        }
+
+        // Create an instance of InvoiceGenerator
+        InvoiceGeneratorController generator = new InvoiceGeneratorController();
+        try {
+            // Specify the path where you want to save the invoice
+            String filePath = "invoice_" + orderCode + ".pdf";
+            // Pass both the file path and the order code to createInvoice
+            generator.createInvoice(filePath, orderCode); // Correct method call
+            showAlert(Alert.AlertType.INFORMATION, "Thành công", "Hóa đơn đã được tạo thành công tại: " + filePath);
+        } catch (FileNotFoundException e) {
+            showAlert(Alert.AlertType.ERROR, "Lỗi", "Không thể tạo hóa đơn: " + e.getMessage());
+        }
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String content) {

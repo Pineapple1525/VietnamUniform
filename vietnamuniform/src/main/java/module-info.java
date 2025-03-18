@@ -2,10 +2,12 @@ module com.vietnamuniform {
     requires javafx.controls;
     requires javafx.fxml;
 
-    requires jbcrypt;
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires kernel;
+    requires layout;
+    requires io;
 
     opens com.vietnamuniform to javafx.fxml;
     exports com.vietnamuniform;
