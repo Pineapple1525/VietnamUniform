@@ -1,0 +1,19 @@
+#btnYes {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+#btnYes:hover {
+    -fx-background-color: darkred;
+}
+
+#btnNo {
+    -fx-background-color: green;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+#btnNo:hover {
+    -fx-background-color: darkgreen;
+}
