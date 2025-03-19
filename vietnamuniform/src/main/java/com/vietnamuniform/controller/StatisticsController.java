@@ -114,7 +114,7 @@ public class StatisticsController {
         colEmployeeName.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
         colTotalOrders.setCellValueFactory(new PropertyValueFactory<>("totalOrders"));
         colTotalRevenue.setCellValueFactory(new PropertyValueFactory<>("totalRevenue"));
-        colSoldProductCode.setCellValueFactory(new PropertyValueFactory<>("productId"));
+        colSoldProductCode.setCellValueFactory(new PropertyValueFactory<>("productCode"));
         colSoldProductName.setCellValueFactory(new PropertyValueFactory<>("productName"));
         colImportPrice.setCellValueFactory(new PropertyValueFactory<>("importPrice"));
         colSalePrice.setCellValueFactory(new PropertyValueFactory<>("salePrice"));
@@ -187,18 +187,21 @@ public class StatisticsController {
     public List<RevenueStatistics> getRevenueStatistics() {
         List<RevenueStatistics> statisticsList = new ArrayList<>();
         String query = """
-        SELECT
-            rs.stat_id AS id,
-            rs.report_date AS reportDate,
-            COALESCE(SUM(od.quantity), 0) AS totalProductsSold,
-            COALESCE(SUM(o.total_amount), 0) AS totalRevenue,
-            e.code_employee AS employeeCode,
-            e.fullname AS employeeName
-        FROM revenue_statistics rs
-        JOIN orders o ON rs.order_id = o.order_id
-        JOIN employees e ON rs.employee_id = e.employee_id
-        LEFT JOIN order_details od ON o.code_order = od.code_order
-        GROUP BY rs.stat_id, rs.report_date, e.code_employee, e.fullname
+SELECT
+    rs.stat_id AS id,
+    rs.report_date AS reportDate,
+    COALESCE(SUM(od.quantity), 0) AS totalProductsSold,
+    COALESCE(SUM(od.quantity * p.sale_price), 0) AS totalRevenue,
+    e.code_employee AS employeeCode,
+    e.fullname AS employeeName
+FROM revenue_statistics rs
+JOIN orders o ON rs.order_id = o.order_id
+JOIN employees e ON rs.employee_id = e.employee_id
+LEFT JOIN order_details od ON o.code_order = od.code_order
+LEFT JOIN products p ON od.code_product = p.code_product
+GROUP BY rs.stat_id, rs.report_date, e.code_employee, e.fullname;
+
+
     """;
 
         try (Connection conn = DBConnection.getConn();
@@ -231,24 +234,25 @@ public class StatisticsController {
     public List<EmployeeStatistics> getEmployeeStatistics() {
         List<EmployeeStatistics> statisticsList = new ArrayList<>();
         String query = """
-        SELECT
-            es.stat_id AS id,
-            es.report_date AS reportDate,
-            e.employee_id AS employeeId,
-            e.fullname AS employeeName,
-            COUNT(DISTINCT o.order_id) AS totalOrders,
-            COALESCE(SUM(o.total_amount), 0) AS totalRevenue,
-            p.product_id AS productId,
-            p.name AS productName,
-            p.import_price AS importPrice,
-            p.sale_price AS salePrice,
-            COALESCE(SUM(od.quantity), 0) AS totalProductsSold
-        FROM employee_statistics es
-        JOIN employees e ON es.employee_id = e.employee_id
-        JOIN orders o ON es.order_id = o.order_id
-        JOIN products p ON es.product_id = p.product_id
-        LEFT JOIN order_details od ON o.code_order = od.code_order AND od.code_product = p.code_product
-        GROUP BY es.stat_id, es.report_date, e.employee_id, e.fullname, p.product_id, p.name, p.import_price, p.sale_price
+SELECT
+    es.stat_id AS id,
+    es.report_date AS reportDate,
+    e.employee_id AS employeeId,
+    e.fullname AS employeeName,
+    COUNT(DISTINCT o.order_id) AS totalOrders,
+    COALESCE(SUM(od.quantity * p.sale_price), 0) AS totalRevenue,
+    p.code_product AS productCode,
+    p.name AS productName,
+    p.import_price AS importPrice,
+    p.sale_price AS salePrice,
+    COALESCE(SUM(od.quantity), 0) AS totalProductsSold
+FROM employee_statistics es
+JOIN employees e ON es.employee_id = e.employee_id
+JOIN orders o ON es.order_id = o.order_id
+JOIN products p ON es.product_id = p.product_id
+LEFT JOIN order_details od ON o.code_order = od.code_order AND od.code_product = p.code_product
+GROUP BY es.stat_id, es.report_date, e.employee_id, e.fullname, p.code_product, p.name, p.import_price, p.sale_price;
+
     """;
 
         try (Connection conn = DBConnection.getConn();
@@ -268,7 +272,7 @@ public class StatisticsController {
 
                 // Chuyển đổi BigDecimal -> double
                 double totalRevenue = rs.getBigDecimal("totalRevenue").doubleValue();
-                int productId = rs.getInt("productId");
+                String productCode = rs.getString("productCode");
                 String productName = rs.getString("productName");
                 double importPrice = rs.getBigDecimal("importPrice").doubleValue();
                 double salePrice = rs.getBigDecimal("salePrice").doubleValue();
@@ -277,7 +281,7 @@ public class StatisticsController {
                 // Tạo đối tượng EmployeeStatistics với đúng kiểu dữ liệu
                 EmployeeStatistics stat = new EmployeeStatistics(
                         id, reportDate, employeeId, employeeName, totalOrders, totalRevenue,
-                        productId, productName, importPrice, salePrice, totalProductsSold
+                        productCode, productName, importPrice, salePrice, totalProductsSold
                 );
                 statisticsList.add(stat);
             }
@@ -301,16 +305,17 @@ public class StatisticsController {
 
         List<RevenueStatistics> statisticsList = new ArrayList<>();
         String query = """
-    SELECT rs.stat_id AS id, rs.report_date AS reportDate, 
-           COALESCE(SUM(od.quantity), 0) AS totalProductsSold, 
-           COALESCE(SUM(o.total_amount), 0) AS totalRevenue, 
-           e.code_employee AS employeeCode, e.fullname AS employeeName 
-    FROM revenue_statistics rs 
-    JOIN orders o ON rs.order_id = o.order_id 
-    JOIN employees e ON rs.employee_id = e.employee_id 
-    LEFT JOIN order_details od ON o.code_order = od.code_order 
-    WHERE rs.report_date BETWEEN ? AND ? 
-    GROUP BY rs.stat_id, rs.report_date, e.code_employee, e.fullname""";
+                SELECT rs.stat_id AS id, rs.report_date AS reportDate,
+                       COALESCE(SUM(od.quantity), 0) AS totalProductsSold,
+                       COALESCE(SUM(od.quantity * od.sale_price), 0) AS totalRevenue,
+                       e.code_employee AS employeeCode, e.fullname AS employeeName
+                FROM revenue_statistics rs
+                JOIN orders o ON rs.order_id = o.order_id
+                JOIN employees e ON rs.employee_id = e.employee_id
+                LEFT JOIN order_details od ON o.code_order = od.code_order
+                WHERE rs.report_date BETWEEN ? AND ?
+                GROUP BY rs.stat_id, rs.report_date, e.code_employee, e.fullname;
+                """;
 
         try (Connection conn = DBConnection.getConn();
              PreparedStatement ps = conn.prepareStatement(query)) {
@@ -348,19 +353,23 @@ public class StatisticsController {
         String employeeName = searchEmployeeField.getText().trim();
         List<EmployeeStatistics> statisticsList = new ArrayList<>();
         String query = """
-        SELECT es.stat_id AS id, es.report_date AS reportDate, e.employee_id AS employeeId, 
-               e.fullname AS employeeName, COUNT(DISTINCT o.order_id) AS totalOrders, 
-               COALESCE(SUM(o.total_amount), 0) AS totalRevenue, 
-               p.product_id AS productId, p.name AS productName, 
-               p.import_price AS importPrice, p.sale_price AS salePrice, 
-               COALESCE(SUM(od.quantity), 0) AS totalProductsSold 
-        FROM employee_statistics es 
-        JOIN employees e ON es.employee_id = e.employee_id 
-        JOIN orders o ON es.order_id = o.order_id 
-        JOIN products p ON es.product_id = p.product_id 
-        LEFT JOIN order_details od ON o.code_order = od.code_order AND od.code_product = p.code_product 
-        WHERE e.fullname LIKE ? 
-        GROUP BY es.stat_id, es.report_date, e.employee_id, e.fullname, p.product_id, p.name, p.import_price, p.sale_price""";
+                SELECT es.stat_id AS id, es.report_date AS reportDate,
+                       e.employee_id AS employeeId, e.fullname AS employeeName,
+                       COUNT(DISTINCT o.order_id) AS totalOrders,
+                       COALESCE(SUM(od.quantity * od.sale_price), 0) AS totalRevenue,
+                       p.code_product AS productCode, p.name AS productName,
+                       p.import_price AS importPrice, p.sale_price AS salePrice,
+                       COALESCE(SUM(od.quantity), 0) AS totalProductsSold
+                FROM employee_statistics es
+                JOIN employees e ON es.employee_id = e.employee_id
+                JOIN orders o ON es.order_id = o.order_id
+                JOIN products p ON es.product_id = p.product_id
+                LEFT JOIN order_details od ON o.code_order = od.code_order
+                                         AND od.code_product = p.code_product
+                WHERE e.fullname LIKE ?
+                GROUP BY es.stat_id, es.report_date, e.employee_id, e.fullname,
+                         p.product_id, p.name, p.import_price, p.sale_price;
+                """;
 
         try (Connection conn = DBConnection.getConn();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -374,7 +383,7 @@ public class StatisticsController {
                             rs.getString("employeeName"),
                             rs.getInt("totalOrders"),
                             rs.getBigDecimal("totalRevenue").doubleValue(),
-                            rs.getInt("productId"),
+                            rs.getString("productCode"),
                             rs.getString("productName"),
                             rs.getBigDecimal("importPrice").doubleValue(),
                             rs.getBigDecimal("salePrice").doubleValue(),

@@ -30,6 +30,9 @@ public class ProductController {
     @FXML
     private ScrollPane mainPane;
 
+    @FXML private TextField searchField;
+
+
     @FXML private TextField txtCodeProduct, txtName, txtCategory, txtDescription, txtImportPrice, txtSalePrice, txtQuantity, txtManufactureDate, txtImageUrl;
     @FXML private Button btnAdd, btnUpdate, btnDelete;
     private boolean isEditing = false;
@@ -218,6 +221,29 @@ public class ProductController {
             }
         });
     }
+
+    @FXML
+    private void searchProductByCode() {
+        String searchCode = searchField.getText().trim();
+        if (searchCode.isEmpty()) {
+            productTable.setItems(productList); // Hiển thị lại toàn bộ danh sách nếu ô tìm kiếm rỗng
+            return;
+        }
+
+        ObservableList<Product> filteredList = FXCollections.observableArrayList();
+        for (Product product : productList) {
+            if (product.getCodeProduct().equalsIgnoreCase(searchCode)) {
+                filteredList.add(product);
+            }
+        }
+
+        if (filteredList.isEmpty()) {
+            System.out.println("⚠️ Không tìm thấy sản phẩm có mã: " + searchCode);
+        } else {
+            productTable.setItems(filteredList);
+        }
+    }
+
     private void watchCSS(String cssFilePath) {
         Thread thread = new Thread(() -> {
             try {
